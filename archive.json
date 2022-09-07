@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-08-17T03:41:57.364512+00:00",
+  "timestamp": "2022-09-07T07:51:41.174994+00:00",
   "repo": "ietf-rats-wg/architecture",
   "labels": [
     {
@@ -6644,6 +6644,38 @@
       "createdAt": "2022-07-23T15:56:01Z",
       "updatedAt": "2022-07-24T18:29:15Z",
       "closedAt": "2022-07-24T18:29:15Z",
+      "comments": []
+    },
+    {
+      "number": 430,
+      "id": "I_kwDODT6R7s5QpbqU",
+      "title": "SecDir review: mitigation against contextual attack",
+      "url": "https://github.com/ietf-rats-wg/architecture/issues/430",
+      "state": "OPEN",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The review is at:  https://mailarchive.ietf.org/arch/msg/last-call/0JpYvkgL-79nvmsrUpWKtMqtkhE\r\nThe review is positive, but asks for:\r\n````\r\nEven                       \r\nif confidentiality is provided, the section goes on to state that information                        \r\ncan still be inferred by contextual or timing of the attestor exchange.  The                         \r\ndraft doesn\u2019t describe ways to mitigate against this type of attack but should                       \r\ngive some guidance. \r\n````\r\n",
+      "createdAt": "2022-08-27T12:53:37Z",
+      "updatedAt": "2022-08-27T12:53:37Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 431,
+      "id": "I_kwDODT6R7s5QpcNO",
+      "title": "Art review: consider replacing layered example",
+      "url": "https://github.com/ietf-rats-wg/architecture/issues/431",
+      "state": "OPEN",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "As per discussion at: https://mailarchive.ietf.org/arch/msg/rats/REAexJRlAPnRCofS--8r8Zhcxgo/  consider replacing the chassis example with an a mobile example.\r\n",
+      "createdAt": "2022-08-27T13:04:13Z",
+      "updatedAt": "2022-08-27T13:04:13Z",
+      "closedAt": null,
       "comments": []
     }
   ],
@@ -35519,7 +35551,7 @@
       "labels": [],
       "body": "attempt to provide forward reference as requested on Monday",
       "createdAt": "2022-07-28T13:03:21Z",
-      "updatedAt": "2022-07-28T21:57:10Z",
+      "updatedAt": "2022-08-24T15:20:44Z",
       "baseRepository": "ietf-rats-wg/architecture",
       "baseRefName": "master",
       "baseRefOid": "8f9859b0375230f5e4703f745ea1b16c65d664ca",
@@ -35613,6 +35645,19 @@
           "body": "LGTM",
           "createdAt": "2022-07-28T21:15:36Z",
           "updatedAt": "2022-07-28T21:15:36Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDODT6R7s5AnL5-",
+          "commit": {
+            "abbreviatedOid": "37f455f"
+          },
+          "author": "nedmsmith",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "\"artifacts are defined by which roles produce them or consume them\" - This sentence structure seems awkward. Is \"artifacts are defined by the roles that produce or consume them\" better?",
+          "createdAt": "2022-08-24T15:20:44Z",
+          "updatedAt": "2022-08-24T15:20:44Z",
           "comments": []
         }
       ]
