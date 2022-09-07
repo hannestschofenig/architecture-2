@@ -376,23 +376,37 @@ ul.empty li, .ulEmpty li {
 
 /* definition lists */
 dl {
+  clear: left;
+  --indent: 3ch;
+  /* --indent: attr(indent ch); not supported in any browser, but we can dream */
 }
 dl > dt {
   float: left;
   margin-right: 1em;
+  min-width: 20ch;
+}
+dl.dlNewline > dt {
+  float: none;
 }
 dl > dd {
   margin-bottom: .8em;
-  min-height: 1.3em;
+  margin-left: var(--indent) !important; /* stupid element overrides */
+  min-height: 2ex;
 }
 :is(dl.compact, .dlCompact) > dd {
-  margin-bottom: 0em;
+  margin-bottom: 0;
+}
+:is(dl.compact, .dlCompact) > dd > :is(:first-child, .break:first-child + *) {
+  margin-top: 0;
+}
+:is(dl.compact, .dlCompact) > dd > :is(:last-child) {
+  margin-bottom: 0;
 }
 dl > dd > dl {
   margin-top: 0.5em;
-  margin-bottom: 0em;
+  margin-bottom: 0;
 }
-dd.break {
+dl .break {
   display: none;
 }
 
@@ -587,17 +601,18 @@ hr {
   margin: 0;
   font-size: var(--small-font-size);
   line-height: 18px;
-  --identifier-width: 8em;
+  --identifier-width: 15ch;
 }
 #identifiers dt {
   width: var(--identifier-width);
-  margin: 0;
+  min-width: var(--identifier-width);
   clear: left;
   float: left;
   text-align: right;
 }
 #identifiers dd {
-  margin: 0 0 0 calc(1em + var(--identifier-width));
+  margin: 0;
+  margin-left: calc(1em + var(--identifier-width)) !important;
   min-width: 5em;
 }
 #identifiers .authors .author {
@@ -653,7 +668,7 @@ hr {
   margin: 0 10px 0 -25px;
 }
 .references dd {
-  margin-left: 8em;
+  margin-left: 8em !important;
   overflow: auto;
 }
 
@@ -920,16 +935,6 @@ a.toplink {
   margin: 8px 0.5em 0;
 }
 
-/* Fix the dl styling to match the RFC 7992 attributes */
-dl > dt,
-dl.dlParallel > dt {
-  float: left;
-  margin-right: 1em;
-}
-dl.dlNewline > dt {
-  float: none;
-}
-
 /* Provide styling for table cell text alignment */
 table .text-left {
   text-align: left;
@@ -1041,11 +1046,11 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">RATS Arch &amp; Terms</td>
-<td class="right">July 2022</td>
+<td class="right">September 2022</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Birkholz, et al.</td>
-<td class="center">Expires 25 January 2023</td>
+<td class="center">Expires 11 March 2023</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1058,12 +1063,12 @@ svg :is([stroke="fill"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-rats-architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-07-24" class="published">24 July 2022</time>
+<time datetime="2022-09-07" class="published">7 September 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2023-01-25">25 January 2023</time></dd>
+<dd class="expires"><time datetime="2023-03-11">11 March 2023</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1129,7 +1134,7 @@ the content of claims, and protocols.<a href="#section-abstract-1" class="pilcro
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 25 January 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 11 March 2023.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1330,41 +1335,41 @@ the content of claims, and protocols.<a href="#section-abstract-1" class="pilcro
             <p id="section-toc.1-1.15.1"><a href="#section-15" class="xref">15</a>. <a href="#name-notable-contributions" class="xref">Notable Contributions</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
-            <p id="section-toc.1-1.16.1"><a href="#section-16" class="xref">16</a>. <a href="#name-appendix-a-time-considerati" class="xref">Appendix A: Time Considerations</a></p>
+            <p id="section-toc.1-1.16.1"><a href="#section-16" class="xref">16</a>. <a href="#name-references" class="xref">References</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.1">
-                <p id="section-toc.1-1.16.2.1.1"><a href="#section-16.1" class="xref">16.1</a>.  <a href="#name-example-1-timestamp-based-p" class="xref">Example 1: Timestamp-based Passport Model Example</a></p>
+                <p id="section-toc.1-1.16.2.1.1"><a href="#section-16.1" class="xref">16.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.2">
-                <p id="section-toc.1-1.16.2.2.1"><a href="#section-16.2" class="xref">16.2</a>.  <a href="#name-example-2-nonce-based-passp" class="xref">Example 2: Nonce-based Passport Model Example</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.3">
-                <p id="section-toc.1-1.16.2.3.1"><a href="#section-16.3" class="xref">16.3</a>.  <a href="#name-example-3-epoch-id-based-pa" class="xref">Example 3: Epoch ID-based Passport Model Example</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.4">
-                <p id="section-toc.1-1.16.2.4.1"><a href="#section-16.4" class="xref">16.4</a>.  <a href="#name-example-4-timestamp-based-b" class="xref">Example 4: Timestamp-based Background-Check Model Example</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16.2.5">
-                <p id="section-toc.1-1.16.2.5.1"><a href="#section-16.5" class="xref">16.5</a>.  <a href="#name-example-5-nonce-based-backg" class="xref">Example 5: Nonce-based Background-Check Model Example</a></p>
+                <p id="section-toc.1-1.16.2.2.1"><a href="#section-16.2" class="xref">16.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17">
-            <p id="section-toc.1-1.17.1"><a href="#section-17" class="xref">17</a>. <a href="#name-references" class="xref">References</a></p>
+            <p id="section-toc.1-1.17.1"><a href="#appendix-A" class="xref">Appendix A</a>.  <a href="#name-time-considerations" class="xref">Time Considerations</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17.2.1">
-                <p id="section-toc.1-1.17.2.1.1"><a href="#section-17.1" class="xref">17.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
+                <p id="section-toc.1-1.17.2.1.1"><a href="#appendix-A.1" class="xref">A.1</a>.  <a href="#name-example-1-timestamp-based-p" class="xref">Example 1: Timestamp-based Passport Model Example</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17.2.2">
-                <p id="section-toc.1-1.17.2.2.1"><a href="#section-17.2" class="xref">17.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
+                <p id="section-toc.1-1.17.2.2.1"><a href="#appendix-A.2" class="xref">A.2</a>.  <a href="#name-example-2-nonce-based-passp" class="xref">Example 2: Nonce-based Passport Model Example</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17.2.3">
+                <p id="section-toc.1-1.17.2.3.1"><a href="#appendix-A.3" class="xref">A.3</a>.  <a href="#name-example-3-epoch-id-based-pa" class="xref">Example 3: Epoch ID-based Passport Model Example</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17.2.4">
+                <p id="section-toc.1-1.17.2.4.1"><a href="#appendix-A.4" class="xref">A.4</a>.  <a href="#name-example-4-timestamp-based-b" class="xref">Example 4: Timestamp-based Background-Check Model Example</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17.2.5">
+                <p id="section-toc.1-1.17.2.5.1"><a href="#appendix-A.5" class="xref">A.5</a>.  <a href="#name-example-5-nonce-based-backg" class="xref">Example 5: Nonce-based Background-Check Model Example</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.18">
-            <p id="section-toc.1-1.18.1"><a href="#appendix-A" class="xref"></a><a href="#name-contributors" class="xref">Contributors</a></p>
+            <p id="section-toc.1-1.18.1"><a href="#appendix-B" class="xref"></a><a href="#name-contributors" class="xref">Contributors</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.19">
-            <p id="section-toc.1-1.19.1"><a href="#appendix-B" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.19.1"><a href="#appendix-C" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1410,7 +1415,7 @@ such as roles, device composition, topological patterns, and appraisal procedure
 semantic interoperability across solutions and platforms involving multiple vendors and providers.<a href="#section-1-6" class="pilcrow">¶</a></p>
 <p id="section-1-7">Amongst other things, this document is about trust and trustworthiness.
 Trust is a choice one makes about another system.
-Trustworthiness is a quality about the other system that can be used in making one's decision to trust it or not.  This is subtle difference and being
+Trustworthiness is a quality about the other system that can be used in making one's decision to trust it or not.  This is a subtle difference and being
 familiar with the difference is crucial for using this document.
 Additionally, the concepts of freshness and trust relationships with
 respect to RATS are elaborated on to enable implementers to choose
@@ -1765,7 +1770,7 @@ or might be programmed into the Relying Party,
 or might be obtained via some other mechanism.<a href="#section-3-9" class="pilcrow">¶</a></p>
 <p id="section-3-10">See <a href="#messages" class="xref">Section 8</a> for further discussion of the conceptual messages shown in <a href="#dataflow" class="xref">Figure 1</a>.
 Section <a href="#terminology" class="xref">Section 4</a> provides a more complete definition of all RATS roles.<a href="#section-3-10" class="pilcrow">¶</a></p>
-<div id="two-types-of-environments-of-an-attester">
+<div id="twotypes">
 <section id="section-3.1">
         <h3 id="name-two-types-of-environments-o">
 <a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-two-types-of-environments-o" class="section-name selfRef">Two Types of Environments of an Attester</a>
@@ -2138,6 +2143,12 @@ Endorsements and appraisal policies (obtained the same way as by any other
 Verifier) as part of the appraisal procedures that generate Attestation Results.
 The inside Verifier then conveys the Attestation Results of other Attesters to the outside Verifier,
 whether in the same conveyance protocol as part of the Evidence or not.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+<p id="section-3.4-2">As explained in <a href="#terminology" class="xref">Section 4</a>, there are a variety of roles in the RATS architecture and they are defined by a unique combination of artifacts they produce and consume.
+Conversely, artifacts are also defined by the roles that produce or consume them.
+To produce an artifact means that a given role introduces it into the RATS architecture.
+To consume an artifact means that a given role has responsibility for processing it in the RATS architecture.
+Roles also have the ability to perform additional actions such caching or forwarding artifacts as opaque data.
+As depicted in <a href="#overview" class="xref">Section 5</a>, these additional actions can be performed by several roles.<a href="#section-3.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2637,7 +2648,7 @@ plans to support in the TEEP architecture <span>[<a href="#I-D.ietf-teep-archite
 </div>
 </section>
 </div>
-<div id="roles-and-entities">
+<div id="rolesentities">
 <section id="section-6">
       <h2 id="name-roles-and-entities">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-roles-and-entities" class="section-name selfRef">Roles and Entities</a>
@@ -3266,10 +3277,8 @@ as all use the same Epoch ID Distributor.<a href="#section-10.3-6" class="pilcro
         <h3 id="name-discussion">
 <a href="#section-10.4" class="section-number selfRef">10.4. </a><a href="#name-discussion" class="section-name selfRef">Discussion</a>
         </h3>
-<p id="section-10.4-1">Implicit and explicit timekeeping can be combined into hybrid mechanisms.  For
-example, if clocks exist and are considered trustworthy but are not
-synchronized, a nonce-based exchange may be used to determine the (relative)
-time offset between the involved peers, followed by any number of timestamp
+<p id="section-10.4-1">Implicit and explicit timekeeping can be combined into hybrid mechanisms.
+For example, if clocks exist within the Attesting Environment and are considered trustworthy (tamper-proof) but  are not synchronized, a nonce-based exchange may be used to determine the (relative) time offset between the involved peers, followed by any number of timestamp
 based exchanges.<a href="#section-10.4-1" class="pilcrow">¶</a></p>
 <p id="section-10.4-2">It is important to note that the actual values in Claims might have been
 generated long before the Claims are signed.  If so, it is the signer's
@@ -3277,7 +3286,7 @@ responsibility to ensure that the values are still correct when they are
 signed.  For example, values generated at boot time might have been saved to
 secure storage until network connectivity is established to the remote Verifier
 and a nonce is obtained.<a href="#section-10.4-2" class="pilcrow">¶</a></p>
-<p id="section-10.4-3">A more detailed discussion with examples appears in <a href="#time-considerations" class="xref">Section 16</a>.<a href="#section-10.4-3" class="pilcrow">¶</a></p>
+<p id="section-10.4-3">A more detailed discussion with examples appears in <a href="#time-considerations" class="xref">Appendix A</a>.<a href="#section-10.4-3" class="pilcrow">¶</a></p>
 <p id="section-10.4-4">For a discussion on the security of epoch IDs see <a href="#epochids-sec" class="xref">Section 12.3</a>.<a href="#section-10.4-4" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -3439,6 +3448,11 @@ If an attacker can configure or modify appraisal policies, Endorsements or Refer
 <p id="section-12.2-6">Security protections in RATS may be applied at different layers, whether by a conveyance protocol, or an information encoding format.
 This architecture expects conceptual messages to be end-to-end protected based on the role interaction context.
 For example, if an Attester produces Evidence that is relayed through some other entity that doesn't implement the Attester or the intended Verifier roles, then the relaying entity should not expect to have access to the Evidence.<a href="#section-12.2-6" class="pilcrow">¶</a></p>
+<p id="section-12.2-7">The RATS architecture allows for an entity to function in multiple roles
+(<a href="#rolesentities" class="xref">Section 6</a>) and for composite devices (<a href="#compositedevice" class="xref">Section 3.3</a>).
+Implementers need to evaluate their designs to ensure that the assumed security properties of the individual components and roles still hold despite the lack of separation, and that emergent risk is not introduced.
+The specifics of this evaluation will depend on the implementation and the use case and hence is out of scope for this document.
+Isolation mechanisms in software or hardware that separate Attesting Environments and Target Environments <a href="#twotypes" class="xref">Section 3.1</a> can support an implementer's evaluation and resulting design decisions.<a href="#section-12.2-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="epochids-sec">
@@ -3527,19 +3541,130 @@ Carsten Bormann provided many of the motivational building blocks with respect t
 <p id="section-15-2">Peter Loscocco contributed critical review feedback as part of the weekly design team meetings that added precision and depth to several sections.<a href="#section-15-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="time-considerations">
 <section id="section-16">
-      <h2 id="name-appendix-a-time-considerati">
-<a href="#section-16" class="section-number selfRef">16. </a><a href="#name-appendix-a-time-considerati" class="section-name selfRef">Appendix A: Time Considerations</a>
+      <h2 id="name-references">
+<a href="#section-16" class="section-number selfRef">16. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
-<p id="section-16-1"><a href="#freshness" class="xref">Section 10</a> discussed various issues and requirements around freshness of evidence, and
+<section id="section-16.1">
+        <h3 id="name-normative-references">
+<a href="#section-16.1" class="section-number selfRef">16.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+        </h3>
+<dl class="references">
+<dt id="RFC5280">[RFC5280]</dt>
+        <dd>
+<span class="refAuthor">Cooper, D.</span>, <span class="refAuthor">Santesson, S.</span>, <span class="refAuthor">Farrell, S.</span>, <span class="refAuthor">Boeyen, S.</span>, <span class="refAuthor">Housley, R.</span>, and <span class="refAuthor">W. Polk</span>, <span class="refTitle">"Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile"</span>, <span class="seriesInfo">RFC 5280</span>, <span class="seriesInfo">DOI 10.17487/RFC5280</span>, <time datetime="2008-05" class="refDate">May 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5280">https://www.rfc-editor.org/rfc/rfc5280</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7519">[RFC7519]</dt>
+        <dd>
+<span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">N. Sakimura</span>, <span class="refTitle">"JSON Web Token (JWT)"</span>, <span class="seriesInfo">RFC 7519</span>, <span class="seriesInfo">DOI 10.17487/RFC7519</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7519">https://www.rfc-editor.org/rfc/rfc7519</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8392">[RFC8392]</dt>
+      <dd>
+<span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Wahlstroem, E.</span>, <span class="refAuthor">Erdtman, S.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"CBOR Web Token (CWT)"</span>, <span class="seriesInfo">RFC 8392</span>, <span class="seriesInfo">DOI 10.17487/RFC8392</span>, <time datetime="2018-05" class="refDate">May 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8392">https://www.rfc-editor.org/rfc/rfc8392</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+<section id="section-16.2">
+        <h3 id="name-informative-references">
+<a href="#section-16.2" class="section-number selfRef">16.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+        </h3>
+<dl class="references">
+<dt id="CCC-DeepDive">[CCC-DeepDive]</dt>
+        <dd>
+<span class="refAuthor">Confidential Computing Consortium</span>, <span class="refTitle">"Confidential Computing Deep Dive"</span>, <span>n.d.</span>, <span>&lt;<a href="https://confidentialcomputing.io/whitepaper-02-latest">https://confidentialcomputing.io/whitepaper-02-latest</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="CTAP">[CTAP]</dt>
+        <dd>
+<span class="refAuthor">FIDO Alliance</span>, <span class="refTitle">"Client to Authenticator Protocol"</span>, <span>n.d.</span>, <span>&lt;<a href="https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-client-to-authenticator-protocol-v2.0-id-20180227.html">https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-client-to-authenticator-protocol-v2.0-id-20180227.html</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.birkholz-rats-tuda">[I-D.birkholz-rats-tuda]</dt>
+        <dd>
+<span class="refAuthor">Fuchs, A.</span>, <span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">McDonald, I. E.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Time-Based Uni-Directional Attestation"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-birkholz-rats-tuda-07</span>, <time datetime="2022-07-10" class="refDate">10 July 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-birkholz-rats-tuda-07">https://datatracker.ietf.org/doc/html/draft-birkholz-rats-tuda-07</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.birkholz-rats-uccs">[I-D.birkholz-rats-uccs]</dt>
+        <dd>
+<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">O'Donoghue, J.</span>, <span class="refAuthor">Cam-Winget, N.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"A CBOR Tag for Unprotected CWT Claims Sets"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-birkholz-rats-uccs-03</span>, <time datetime="2021-03-08" class="refDate">8 March 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-birkholz-rats-uccs-03">https://datatracker.ietf.org/doc/html/draft-birkholz-rats-uccs-03</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-rats-daa">[I-D.ietf-rats-daa]</dt>
+        <dd>
+<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Newton, C.</span>, <span class="refAuthor">Chen, L.</span>, and <span class="refAuthor">D. Thaler</span>, <span class="refTitle">"Direct Anonymous Attestation for the Remote Attestation Procedures Architecture"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-daa-01</span>, <time datetime="2022-07-10" class="refDate">10 July 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-daa-01">https://datatracker.ietf.org/doc/html/draft-ietf-rats-daa-01</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-teep-architecture">[I-D.ietf-teep-architecture]</dt>
+        <dd>
+<span class="refAuthor">Pei, M.</span>, <span class="refAuthor">Tschofenig, H.</span>, <span class="refAuthor">Thaler, D.</span>, and <span class="refAuthor">D. Wheeler</span>, <span class="refTitle">"Trusted Execution Environment Provisioning (TEEP) Architecture"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teep-architecture-18</span>, <time datetime="2022-07-11" class="refDate">11 July 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teep-architecture-18">https://datatracker.ietf.org/doc/html/draft-ietf-teep-architecture-18</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.tschofenig-rats-psa-token">[I-D.tschofenig-rats-psa-token]</dt>
+        <dd>
+<span class="refAuthor">Tschofenig, H.</span>, <span class="refAuthor">Frost, S.</span>, <span class="refAuthor">Brossard, M.</span>, <span class="refAuthor">Shaw, A.</span>, and <span class="refAuthor">T. Fossati</span>, <span class="refTitle">"Arm's Platform Security Architecture (PSA) Attestation Token"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-tschofenig-rats-psa-token-10</span>, <time datetime="2022-09-06" class="refDate">6 September 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-tschofenig-rats-psa-token-10">https://datatracker.ietf.org/doc/html/draft-tschofenig-rats-psa-token-10</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.tschofenig-tls-cwt">[I-D.tschofenig-tls-cwt]</dt>
+        <dd>
+<span class="refAuthor">Tschofenig, H.</span> and <span class="refAuthor">M. Brossard</span>, <span class="refTitle">"Using CBOR Web Tokens (CWTs) in Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-tschofenig-tls-cwt-02</span>, <time datetime="2020-07-13" class="refDate">13 July 2020</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-tschofenig-tls-cwt-02">https://datatracker.ietf.org/doc/html/draft-tschofenig-tls-cwt-02</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="NIST-800-57-p1">[NIST-800-57-p1]</dt>
+        <dd>
+<span class="refAuthor">Barker, E.</span>, <span class="refTitle">"Recommendation for Key Managemement: Part 1 - General"</span>, <time datetime="2020-05" class="refDate">May 2020</time>, <span>&lt;<a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r5.pdf">https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r5.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="OPCUA">[OPCUA]</dt>
+        <dd>
+<span class="refAuthor">OPC Foundation</span>, <span class="refTitle">"OPC Unified Architecture Specification, Part 2: Security Model, Release 1.03"</span>, <span class="seriesInfo">OPC 10000-2 </span>, <time datetime="2015-11-25" class="refDate">25 November 2015</time>, <span>&lt;<a href="https://opcfoundation.org/developer-tools/specifications-unified-architecture/part-2-security-model/">https://opcfoundation.org/developer-tools/specifications-unified-architecture/part-2-security-model/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC4086">[RFC4086]</dt>
+        <dd>
+<span class="refAuthor">Eastlake 3rd, D.</span>, <span class="refAuthor">Schiller, J.</span>, and <span class="refAuthor">S. Crocker</span>, <span class="refTitle">"Randomness Requirements for Security"</span>, <span class="seriesInfo">BCP 106</span>, <span class="seriesInfo">RFC 4086</span>, <span class="seriesInfo">DOI 10.17487/RFC4086</span>, <time datetime="2005-06" class="refDate">June 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4086">https://www.rfc-editor.org/rfc/rfc4086</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC4949">[RFC4949]</dt>
+        <dd>
+<span class="refAuthor">Shirey, R.</span>, <span class="refTitle">"Internet Security Glossary, Version 2"</span>, <span class="seriesInfo">FYI 36</span>, <span class="seriesInfo">RFC 4949</span>, <span class="seriesInfo">DOI 10.17487/RFC4949</span>, <time datetime="2007-08" class="refDate">August 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4949">https://www.rfc-editor.org/rfc/rfc4949</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5209">[RFC5209]</dt>
+        <dd>
+<span class="refAuthor">Sangster, P.</span>, <span class="refAuthor">Khosravi, H.</span>, <span class="refAuthor">Mani, M.</span>, <span class="refAuthor">Narayan, K.</span>, and <span class="refAuthor">J. Tardo</span>, <span class="refTitle">"Network Endpoint Assessment (NEA): Overview and Requirements"</span>, <span class="seriesInfo">RFC 5209</span>, <span class="seriesInfo">DOI 10.17487/RFC5209</span>, <time datetime="2008-06" class="refDate">June 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5209">https://www.rfc-editor.org/rfc/rfc5209</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC6024">[RFC6024]</dt>
+        <dd>
+<span class="refAuthor">Reddy, R.</span> and <span class="refAuthor">C. Wallace</span>, <span class="refTitle">"Trust Anchor Management Requirements"</span>, <span class="seriesInfo">RFC 6024</span>, <span class="seriesInfo">DOI 10.17487/RFC6024</span>, <time datetime="2010-10" class="refDate">October 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6024">https://www.rfc-editor.org/rfc/rfc6024</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8322">[RFC8322]</dt>
+        <dd>
+<span class="refAuthor">Field, J.</span>, <span class="refAuthor">Banghart, S.</span>, and <span class="refAuthor">D. Waltermire</span>, <span class="refTitle">"Resource-Oriented Lightweight Information Exchange (ROLIE)"</span>, <span class="seriesInfo">RFC 8322</span>, <span class="seriesInfo">DOI 10.17487/RFC8322</span>, <time datetime="2018-02" class="refDate">February 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8322">https://www.rfc-editor.org/rfc/rfc8322</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="strengthoffunction">[strengthoffunction]</dt>
+        <dd>
+<span class="refAuthor">NISC</span>, <span class="refTitle">"Strength of Function"</span>, <span>n.d.</span>, <span>&lt;<a href="https://csrc.nist.gov/glossary/term/strength_of_function">https://csrc.nist.gov/glossary/term/strength_of_function</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="TCG-DICE">[TCG-DICE]</dt>
+        <dd>
+<span class="refAuthor">Trusted Computing Group</span>, <span class="refTitle">"DICE Certificate Profiles"</span>, <span>n.d.</span>, <span>&lt;<a href="https://trustedcomputinggroup.org/wp-content/uploads/DICE-Certificate-Profiles-r01_3june2020-1.pdf">https://trustedcomputinggroup.org/wp-content/uploads/DICE-Certificate-Profiles-r01_3june2020-1.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="TCG-DICE-SIBDA">[TCG-DICE-SIBDA]</dt>
+        <dd>
+<span class="refAuthor">Trusted Computing Group</span>, <span class="refTitle">"Symmetric Identity Based Device Attestation for DICE"</span>, <time datetime="2019-07-24" class="refDate">24 July 2019</time>, <span>&lt;<a href="https://trustedcomputinggroup.org/wp-content/uploads/TCG_DICE_SymIDAttest_v1_r0p94_pubrev.pdf">https://trustedcomputinggroup.org/wp-content/uploads/TCG_DICE_SymIDAttest_v1_r0p94_pubrev.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="TCGarch">[TCGarch]</dt>
+        <dd>
+<span class="refAuthor">Trusted Computing Group</span>, <span class="refTitle">"Trusted Platform Module Library - Part 1: Architecture"</span>, <time datetime="2019-11-08" class="refDate">8 November 2019</time>, <span>&lt;<a href="https://trustedcomputinggroup.org/wp-content/uploads/TCG_TPM2_r1p59_Part1_Architecture_pub.pdf">https://trustedcomputinggroup.org/wp-content/uploads/TCG_TPM2_r1p59_Part1_Architecture_pub.pdf</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="WebAuthN">[WebAuthN]</dt>
+      <dd>
+<span class="refAuthor">W3C</span>, <span class="refTitle">"Web Authentication: An API for accessing Public Key Credentials"</span>, <span>n.d.</span>, <span>&lt;<a href="https://www.w3.org/TR/webauthn-1/">https://www.w3.org/TR/webauthn-1/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</section>
+<div id="time-considerations">
+<section id="appendix-A">
+      <h2 id="name-time-considerations">
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-time-considerations" class="section-name selfRef">Time Considerations</a>
+      </h2>
+<p id="appendix-A-1"><a href="#freshness" class="xref">Section 10</a> discussed various issues and requirements around freshness of evidence, and
 summarized three approaches that might be used by different solutions to address them.
 This appendix provides more details with examples to help illustrate potential approaches,
-to inform those creating specific solutions.<a href="#section-16-1" class="pilcrow">¶</a></p>
-<p id="section-16-2">The table below defines a number of relevant events, with an ID that
+to inform those creating specific solutions.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">The table below defines a number of relevant events, with an ID that
 is used in subsequent diagrams.  The times of said events might be
 defined in terms of an absolute clock time, such as the Coordinated Universal Time timescale,
-or might be defined relative to some other timestamp or timeticks counter, such as a clock resetting its epoch each time it is powered on.<a href="#section-16-2" class="pilcrow">¶</a></p>
+or might be defined relative to some other timestamp or timeticks counter, such as a clock resetting its epoch each time it is powered on.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
 <table class="center" id="table-1">
         <caption><a href="#table-1" class="selfRef">Table 1</a></caption>
 <thead>
@@ -3607,29 +3732,29 @@ or might be defined relative to some other timestamp or timeticks counter, such 
           </tr>
         </tbody>
       </table>
-<p id="section-16-4">Using the table above, a number of hypothetical examples of how a solution might be built are illustrated below.
+<p id="appendix-A-4">Using the table above, a number of hypothetical examples of how a solution might be built are illustrated below.
 This list is not intended to be complete,
-but is just representative enough to highlight various timing considerations.<a href="#section-16-4" class="pilcrow">¶</a></p>
-<p id="section-16-5">All times are relative to the local clocks, indicated by an "_a" (Attester),
-"_v" (Verifier), or "_r" (Relying Party) suffix.<a href="#section-16-5" class="pilcrow">¶</a></p>
-<p id="section-16-6">Times with an appended Prime (') indicate a second instance of the same event.<a href="#section-16-6" class="pilcrow">¶</a></p>
-<p id="section-16-7">How and if clocks are synchronized depends upon the model.<a href="#section-16-7" class="pilcrow">¶</a></p>
-<p id="section-16-8">In the figures below, curly braces indicate containment.
+but is just representative enough to highlight various timing considerations.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+<p id="appendix-A-5">All times are relative to the local clocks, indicated by an "_a" (Attester),
+"_v" (Verifier), or "_r" (Relying Party) suffix.<a href="#appendix-A-5" class="pilcrow">¶</a></p>
+<p id="appendix-A-6">Times with an appended Prime (') indicate a second instance of the same event.<a href="#appendix-A-6" class="pilcrow">¶</a></p>
+<p id="appendix-A-7">How and if clocks are synchronized depends upon the model.<a href="#appendix-A-7" class="pilcrow">¶</a></p>
+<p id="appendix-A-8">In the figures below, curly braces indicate containment.
 For example, the notation Evidence{foo} indicates that 'foo' is contained in the Evidence
-and is thus covered by its signature.<a href="#section-16-8" class="pilcrow">¶</a></p>
+and is thus covered by its signature.<a href="#appendix-A-8" class="pilcrow">¶</a></p>
 <div id="example-1-timestamp-based-passport-model-example">
-<section id="section-16.1">
+<section id="appendix-A.1">
         <h3 id="name-example-1-timestamp-based-p">
-<a href="#section-16.1" class="section-number selfRef">16.1. </a><a href="#name-example-1-timestamp-based-p" class="section-name selfRef">Example 1: Timestamp-based Passport Model Example</a>
+<a href="#appendix-A.1" class="section-number selfRef">A.1. </a><a href="#name-example-1-timestamp-based-p" class="section-name selfRef">Example 1: Timestamp-based Passport Model Example</a>
         </h3>
-<p id="section-16.1-1">The following example illustrates a hypothetical Passport Model
+<p id="appendix-A.1-1">The following example illustrates a hypothetical Passport Model
 solution that uses timestamps and requires roughly synchronized
 clocks between the Attester, Verifier, and Relying Party, which
 depends on using a secure clock synchronization mechanism.
 As a result, the receiver of a conceptual message containing a
-timestamp can directly compare it to its own clock and timestamps.<a href="#section-16.1-1" class="pilcrow">¶</a></p>
-<div id="section-16.1-2">
-          <div class="alignLeft art-svg artwork" id="section-16.1-2.1">
+timestamp can directly compare it to its own clock and timestamps.<a href="#appendix-A.1-1" class="pilcrow">¶</a></p>
+<div id="appendix-A.1-2">
+          <div class="alignLeft art-svg artwork" id="appendix-A.1-2.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="416" width="520" viewBox="0 0 520 416" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
               <path d="M 8,32 L 8,64" fill="none" stroke="black"></path>
               <path d="M 48,64 L 48,80" fill="none" stroke="black"></path>
@@ -3690,22 +3815,22 @@ timestamp can directly compare it to its own clock and timestamps.<a href="#sect
                 <text x="448" y="372">|</text>
                 <text x="460" y="388">time(OP_r)</text>
               </g>
-            </svg><a href="#section-16.1-2.1" class="pilcrow">¶</a>
+            </svg><a href="#appendix-A.1-2.1" class="pilcrow">¶</a>
 </div>
 </div>
-<p id="section-16.1-3">The Verifier can check whether the Evidence is fresh when appraising
+<p id="appendix-A.1-3">The Verifier can check whether the Evidence is fresh when appraising
 it at time(RG_v) by checking <code>time(RG_v) - time(EG_a) &lt; Threshold</code>, where the
 Verifier's threshold is large enough to account for the maximum
-permitted clock skew between the Verifier and the Attester.<a href="#section-16.1-3" class="pilcrow">¶</a></p>
-<p id="section-16.1-4">If time(VG_a) is also included in the Evidence along with the Claim value
+permitted clock skew between the Verifier and the Attester.<a href="#appendix-A.1-3" class="pilcrow">¶</a></p>
+<p id="appendix-A.1-4">If time(VG_a) is also included in the Evidence along with the Claim value
 generated at that time, and the Verifier decides that it can trust the
 time(VG_a) value, the Verifier can also determine whether the Claim value is
 recent by checking <code>time(RG_v) - time(VG_a) &lt; Threshold</code>.
 The threshold is decided by the Appraisal Policy for Evidence, and again needs to take
 into account the maximum permitted clock skew between
-the Verifier and the Attester.<a href="#section-16.1-4" class="pilcrow">¶</a></p>
-<p id="section-16.1-5">The Attester does not consume the Attestation Result, but might cache it.<a href="#section-16.1-5" class="pilcrow">¶</a></p>
-<p id="section-16.1-6">The Relying Party can check whether the Attestation Result is fresh
+the Verifier and the Attester.<a href="#appendix-A.1-4" class="pilcrow">¶</a></p>
+<p id="appendix-A.1-5">The Attester does not consume the Attestation Result, but might cache it.<a href="#appendix-A.1-5" class="pilcrow">¶</a></p>
+<p id="appendix-A.1-6">The Relying Party can check whether the Attestation Result is fresh
 when appraising it at time(RA_r) by checking <code>time(RA_r) - time(RG_v) &lt; Threshold</code>,
 where the Relying Party's threshold is large enough to account for the
 maximum permitted clock skew between the Relying Party and the Verifier.
@@ -3715,27 +3840,27 @@ careful, however, to not allow continued use beyond the period for which
 it deems the Attestation Result to remain fresh enough.  Thus,
 it might allow use (at time(OP_r)) as long as <code>time(OP_r) - time(RG_v) &lt; Threshold</code>.
 However, if the Attestation Result contains an expiry time time(RX_v) then
-it could explicitly check <code>time(OP_r) &lt; time(RX_v)</code>.<a href="#section-16.1-6" class="pilcrow">¶</a></p>
+it could explicitly check <code>time(OP_r) &lt; time(RX_v)</code>.<a href="#appendix-A.1-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="example-2-nonce-based-passport-model-example">
-<section id="section-16.2">
+<section id="appendix-A.2">
         <h3 id="name-example-2-nonce-based-passp">
-<a href="#section-16.2" class="section-number selfRef">16.2. </a><a href="#name-example-2-nonce-based-passp" class="section-name selfRef">Example 2: Nonce-based Passport Model Example</a>
+<a href="#appendix-A.2" class="section-number selfRef">A.2. </a><a href="#name-example-2-nonce-based-passp" class="section-name selfRef">Example 2: Nonce-based Passport Model Example</a>
         </h3>
-<p id="section-16.2-1">The following example illustrates a hypothetical Passport Model
+<p id="appendix-A.2-1">The following example illustrates a hypothetical Passport Model
 solution that uses nonces instead of timestamps.  Compared to the
 timestamp-based example, it requires an extra round trip
 to retrieve a nonce, and requires that the Verifier and Relying Party
-track state to remember the nonce for some period of time.<a href="#section-16.2-1" class="pilcrow">¶</a></p>
-<p id="section-16.2-2">The advantage is that it does not require that any clocks
+track state to remember the nonce for some period of time.<a href="#appendix-A.2-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.2-2">The advantage is that it does not require that any clocks
 are synchronized.
 As a result, the receiver of a conceptual message containing a
 timestamp cannot directly compare it to its own clock or timestamps.
 Thus we use a suffix ("a" for Attester, "v" for Verifier, and "r" for Relying Party) on the IDs below indicating which clock generated them, since times from different clocks cannot be compared.
-Only the delta between two events from the sender can be used by the receiver.<a href="#section-16.2-2" class="pilcrow">¶</a></p>
-<div id="section-16.2-3">
-          <div class="alignLeft art-svg artwork" id="section-16.2-3.1">
+Only the delta between two events from the sender can be used by the receiver.<a href="#appendix-A.2-2" class="pilcrow">¶</a></p>
+<div id="appendix-A.2-3">
+          <div class="alignLeft art-svg artwork" id="appendix-A.2-3.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="544" width="536" viewBox="0 0 536 544" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
               <path d="M 8,32 L 8,64" fill="none" stroke="black"></path>
               <path d="M 48,64 L 48,80" fill="none" stroke="black"></path>
@@ -3813,18 +3938,18 @@ Only the delta between two events from the sender can be used by the receiver.<a
                 <text x="448" y="500">|</text>
                 <text x="460" y="516">time(OP_r)</text>
               </g>
-            </svg><a href="#section-16.2-3.1" class="pilcrow">¶</a>
+            </svg><a href="#appendix-A.2-3.1" class="pilcrow">¶</a>
 </div>
 </div>
-<p id="section-16.2-4">In this example solution, the Verifier can check whether the Evidence is
-fresh at <code>time(RG_v)</code> by verifying that <code>time(RG_v)-time(NS_v) &lt; Threshold</code>.<a href="#section-16.2-4" class="pilcrow">¶</a></p>
-<p id="section-16.2-5">The Verifier cannot, however, simply rely on a Nonce to
+<p id="appendix-A.2-4">In this example solution, the Verifier can check whether the Evidence is
+fresh at <code>time(RG_v)</code> by verifying that <code>time(RG_v)-time(NS_v) &lt; Threshold</code>.<a href="#appendix-A.2-4" class="pilcrow">¶</a></p>
+<p id="appendix-A.2-5">The Verifier cannot, however, simply rely on a Nonce to
 determine whether the value of a Claim is recent, since the Claim value
 might have been generated long before the nonce was sent by the Verifier.
 However, if the Verifier decides that the Attester can be trusted to
 correctly provide the delta <code>time(EG_a)-time(VG_a)</code>, then it can determine recency
-by checking <code>time(RG_v)-time(NS_v) + time(EG_a)-time(VG_a) &lt; Threshold</code>.<a href="#section-16.2-5" class="pilcrow">¶</a></p>
-<p id="section-16.2-6">Similarly if, based on an Attestation Result from a Verifier it trusts,
+by checking <code>time(RG_v)-time(NS_v) + time(EG_a)-time(VG_a) &lt; Threshold</code>.<a href="#appendix-A.2-5" class="pilcrow">¶</a></p>
+<p id="appendix-A.2-6">Similarly if, based on an Attestation Result from a Verifier it trusts,
 the Relying Party decides that the Attester can be trusted to correctly
 provide time deltas, then it can determine whether the Attestation
 Result is fresh by checking
@@ -3832,43 +3957,43 @@ Result is fresh by checking
 Although the Nonce2 and <code>time(RR_a)-time(EG_a)</code> values cannot be inside
 the Attestation Result, they might be signed by the Attester such
 that the Attestation Result vouches for the Attester's signing
-capability.<a href="#section-16.2-6" class="pilcrow">¶</a></p>
-<p id="section-16.2-7">The Relying Party must still be careful, however, to not allow continued
+capability.<a href="#appendix-A.2-6" class="pilcrow">¶</a></p>
+<p id="appendix-A.2-7">The Relying Party must still be careful, however, to not allow continued
 use beyond the period for which it deems the Attestation Result to remain
 valid.  Thus, if the Attestation Result sends a validity lifetime
 in terms of <code>time(RX_v)-time(RG_v)</code>, then the Relying Party can check
-<code>time(OP_r)-time(NS_r) &lt; time(RX_v)-time(RG_v)</code>.<a href="#section-16.2-7" class="pilcrow">¶</a></p>
+<code>time(OP_r)-time(NS_r) &lt; time(RX_v)-time(RG_v)</code>.<a href="#appendix-A.2-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="example-3-epoch-id-based-passport-model-example">
-<section id="section-16.3">
+<section id="appendix-A.3">
         <h3 id="name-example-3-epoch-id-based-pa">
-<a href="#section-16.3" class="section-number selfRef">16.3. </a><a href="#name-example-3-epoch-id-based-pa" class="section-name selfRef">Example 3: Epoch ID-based Passport Model Example</a>
+<a href="#appendix-A.3" class="section-number selfRef">A.3. </a><a href="#name-example-3-epoch-id-based-pa" class="section-name selfRef">Example 3: Epoch ID-based Passport Model Example</a>
         </h3>
-<p id="section-16.3-1">The example in <a href="#fig-epochid-passport" class="xref">Figure 10</a> illustrates a hypothetical Passport Model
-solution that uses epoch IDs instead of nonces or timestamps.<a href="#section-16.3-1" class="pilcrow">¶</a></p>
-<p id="section-16.3-2">The Epoch ID Distributor broadcasts epoch ID <code>I</code> which starts a new
-epoch <code>E</code> for a protocol participant upon reception at <code>time(IR)</code>.<a href="#section-16.3-2" class="pilcrow">¶</a></p>
-<p id="section-16.3-3">The Attester generates Evidence incorporating epoch ID <code>I</code> and conveys it to the
-Verifier.<a href="#section-16.3-3" class="pilcrow">¶</a></p>
-<p id="section-16.3-4">The Verifier appraises that the received epoch ID <code>I</code> is "fresh" according to the
+<p id="appendix-A.3-1">The example in <a href="#fig-epochid-passport" class="xref">Figure 10</a> illustrates a hypothetical Passport Model
+solution that uses epoch IDs instead of nonces or timestamps.<a href="#appendix-A.3-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.3-2">The Epoch ID Distributor broadcasts epoch ID <code>I</code> which starts a new
+epoch <code>E</code> for a protocol participant upon reception at <code>time(IR)</code>.<a href="#appendix-A.3-2" class="pilcrow">¶</a></p>
+<p id="appendix-A.3-3">The Attester generates Evidence incorporating epoch ID <code>I</code> and conveys it to the
+Verifier.<a href="#appendix-A.3-3" class="pilcrow">¶</a></p>
+<p id="appendix-A.3-4">The Verifier appraises that the received epoch ID <code>I</code> is "fresh" according to the
 definition provided in <a href="#epochfreshness" class="xref">Section 10.3</a> whereby retries are required in the case of mismatching epoch IDs, and generates an Attestation Result.  The
-Attestation Result is conveyed to the Attester.<a href="#section-16.3-4" class="pilcrow">¶</a></p>
-<p id="section-16.3-5">After the transmission of epoch ID <code>I'</code> a new epoch <code>E'</code> is
+Attestation Result is conveyed to the Attester.<a href="#appendix-A.3-4" class="pilcrow">¶</a></p>
+<p id="appendix-A.3-5">After the transmission of epoch ID <code>I'</code> a new epoch <code>E'</code> is
 established when <code>I'</code> is received by each protocol participant.  The Attester
 relays the Attestation Result obtained during epoch <code>E</code> (associated with epoch ID
 <code>I</code>) to the Relying Party using the epoch ID for the current epoch <code>I'</code>.
-If the Relying Party had not yet received <code>I'</code>, then the Attestation Result would be rejected, but in this example, it is received.<a href="#section-16.3-5" class="pilcrow">¶</a></p>
-<p id="section-16.3-6">In the illustrated scenario, the epoch ID for relaying an Attestation Result to the Relying Party is current, while a previous epoch ID was used to generate Verifier evaluated evidence.
+If the Relying Party had not yet received <code>I'</code>, then the Attestation Result would be rejected, but in this example, it is received.<a href="#appendix-A.3-5" class="pilcrow">¶</a></p>
+<p id="appendix-A.3-6">In the illustrated scenario, the epoch ID for relaying an Attestation Result to the Relying Party is current, while a previous epoch ID was used to generate Verifier evaluated evidence.
 This indicates that at least one epoch transition has occurred, and the Attestation Results may only be as fresh as the previous epoch.
 If the Relying Party remembers the previous epoch ID <code>I</code> during an epoch window
 as discussed in <a href="#epochfreshness" class="xref">Section 10.3</a>, and the message is received during
 that window, the Attestation Result is accepted as fresh, and otherwise
-it is rejected as stale.<a href="#section-16.3-6" class="pilcrow">¶</a></p>
+it is rejected as stale.<a href="#appendix-A.3-6" class="pilcrow">¶</a></p>
 <span id="name-epoch-id-based-passport-mod"></span><div id="fig-epochid-passport">
 <figure id="figure-10">
-          <div id="section-16.3-7.1">
-            <div class="alignLeft art-svg artwork" id="section-16.3-7.1.1">
+          <div id="appendix-A.3-7.1">
+            <div class="alignLeft art-svg artwork" id="appendix-A.3-7.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="512" width="520" viewBox="0 0 520 512" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
                 <path d="M 8,48 L 8,80" fill="none" stroke="black"></path>
                 <path d="M 48,80 L 48,96" fill="none" stroke="black"></path>
@@ -3973,7 +4098,7 @@ it is rejected as stale.<a href="#section-16.3-6" class="pilcrow">¶</a></p>
                   <text x="448" y="468">|</text>
                   <text x="444" y="484">time(OP_r)</text>
                 </g>
-              </svg><a href="#section-16.3-7.1.1" class="pilcrow">¶</a>
+              </svg><a href="#appendix-A.3-7.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-10" class="selfRef">Figure 10</a>:
@@ -3983,16 +4108,16 @@ it is rejected as stale.<a href="#section-16.3-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="example-4-timestamp-based-background-check-model-example">
-<section id="section-16.4">
+<section id="appendix-A.4">
         <h3 id="name-example-4-timestamp-based-b">
-<a href="#section-16.4" class="section-number selfRef">16.4. </a><a href="#name-example-4-timestamp-based-b" class="section-name selfRef">Example 4: Timestamp-based Background-Check Model Example</a>
+<a href="#appendix-A.4" class="section-number selfRef">A.4. </a><a href="#name-example-4-timestamp-based-b" class="section-name selfRef">Example 4: Timestamp-based Background-Check Model Example</a>
         </h3>
-<p id="section-16.4-1">The following example illustrates a hypothetical Background-Check Model
+<p id="appendix-A.4-1">The following example illustrates a hypothetical Background-Check Model
 solution that uses timestamps and requires roughly synchronized
 clocks between the Attester, Verifier, and Relying Party.
-The Attester conveys Evidence to the Relying Party, which treats it as opaque and simply forwards it on to the Verifier.<a href="#section-16.4-1" class="pilcrow">¶</a></p>
-<div id="section-16.4-2">
-          <div class="alignLeft art-svg artwork" id="section-16.4-2.1">
+The Attester conveys Evidence to the Relying Party, which treats it as opaque and simply forwards it on to the Verifier.<a href="#appendix-A.4-1" class="pilcrow">¶</a></p>
+<div id="appendix-A.4-2">
+          <div class="alignLeft art-svg artwork" id="appendix-A.4-2.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="368" width="568" viewBox="0 0 568 368" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
               <path d="M 8,32 L 8,64" fill="none" stroke="black"></path>
               <path d="M 72,64 L 72,80" fill="none" stroke="black"></path>
@@ -4053,24 +4178,24 @@ The Attester conveys Evidence to the Relying Party, which treats it as opaque an
                 <text x="240" y="340">|</text>
                 <text x="252" y="356">time(OP_r)</text>
               </g>
-            </svg><a href="#section-16.4-2.1" class="pilcrow">¶</a>
+            </svg><a href="#appendix-A.4-2.1" class="pilcrow">¶</a>
 </div>
 </div>
-<p id="section-16.4-3">The time considerations in this example are equivalent to those
-discussed under Example 1 above.<a href="#section-16.4-3" class="pilcrow">¶</a></p>
+<p id="appendix-A.4-3">The time considerations in this example are equivalent to those
+discussed under Example 1 above.<a href="#appendix-A.4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="example-5-nonce-based-background-check-model-example">
-<section id="section-16.5">
+<section id="appendix-A.5">
         <h3 id="name-example-5-nonce-based-backg">
-<a href="#section-16.5" class="section-number selfRef">16.5. </a><a href="#name-example-5-nonce-based-backg" class="section-name selfRef">Example 5: Nonce-based Background-Check Model Example</a>
+<a href="#appendix-A.5" class="section-number selfRef">A.5. </a><a href="#name-example-5-nonce-based-backg" class="section-name selfRef">Example 5: Nonce-based Background-Check Model Example</a>
         </h3>
-<p id="section-16.5-1">The following example illustrates a hypothetical Background-Check Model
+<p id="appendix-A.5-1">The following example illustrates a hypothetical Background-Check Model
 solution that uses nonces and thus does not require that any clocks
 are synchronized.
-In this example solution, a nonce is generated by a Verifier at the request of a Relying Party, when the Relying Party needs to send one to an Attester.<a href="#section-16.5-1" class="pilcrow">¶</a></p>
-<div id="section-16.5-2">
-          <div class="alignLeft art-svg artwork" id="section-16.5-2.1">
+In this example solution, a nonce is generated by a Verifier at the request of a Relying Party, when the Relying Party needs to send one to an Attester.<a href="#appendix-A.5-1" class="pilcrow">¶</a></p>
+<div id="appendix-A.5-2">
+          <div class="alignLeft art-svg artwork" id="appendix-A.5-2.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="432" width="536" viewBox="0 0 536 432" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px">
               <path d="M 8,32 L 8,64" fill="none" stroke="black"></path>
               <path d="M 48,64 L 48,80" fill="none" stroke="black"></path>
@@ -4142,136 +4267,25 @@ In this example solution, a nonce is generated by a Verifier at the request of a
                 <text x="240" y="404">|</text>
                 <text x="252" y="420">time(OP_r)</text>
               </g>
-            </svg><a href="#section-16.5-2.1" class="pilcrow">¶</a>
+            </svg><a href="#appendix-A.5-2.1" class="pilcrow">¶</a>
 </div>
 </div>
-<p id="section-16.5-3">The Verifier can check whether the Evidence is fresh, and whether a Claim
-value is recent, the same as in Example 2 above.<a href="#section-16.5-3" class="pilcrow">¶</a></p>
-<p id="section-16.5-4">However, unlike in Example 2, the Relying Party can use the Nonce to
+<p id="appendix-A.5-3">The Verifier can check whether the Evidence is fresh, and whether a Claim
+value is recent, the same as in Example 2 above.<a href="#appendix-A.5-3" class="pilcrow">¶</a></p>
+<p id="appendix-A.5-4">However, unlike in Example 2, the Relying Party can use the Nonce to
 determine whether the Attestation Result is fresh, by verifying that
-<code>time(OP_r)-time(NR_r) &lt; Threshold</code>.<a href="#section-16.5-4" class="pilcrow">¶</a></p>
-<p id="section-16.5-5">The Relying Party must still be careful, however, to not allow continued
+<code>time(OP_r)-time(NR_r) &lt; Threshold</code>.<a href="#appendix-A.5-4" class="pilcrow">¶</a></p>
+<p id="appendix-A.5-5">The Relying Party must still be careful, however, to not allow continued
 use beyond the period for which it deems the Attestation Result to remain
 valid.  Thus, if the Attestation Result sends a validity lifetime
 in terms of <code>time(RX_v)-time(RG_v)</code>, then the Relying Party can check
-<code>time(OP_r)-time(ER_r) &lt; time(RX_v)-time(RG_v)</code>.<a href="#section-16.5-5" class="pilcrow">¶</a></p>
+<code>time(OP_r)-time(ER_r) &lt; time(RX_v)-time(RG_v)</code>.<a href="#appendix-A.5-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
-<section id="section-17">
-      <h2 id="name-references">
-<a href="#section-17" class="section-number selfRef">17. </a><a href="#name-references" class="section-name selfRef">References</a>
-      </h2>
-<section id="section-17.1">
-        <h3 id="name-normative-references">
-<a href="#section-17.1" class="section-number selfRef">17.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
-        </h3>
-<dl class="references">
-<dt id="RFC5280">[RFC5280]</dt>
-        <dd>
-<span class="refAuthor">Cooper, D.</span>, <span class="refAuthor">Santesson, S.</span>, <span class="refAuthor">Farrell, S.</span>, <span class="refAuthor">Boeyen, S.</span>, <span class="refAuthor">Housley, R.</span>, and <span class="refAuthor">W. Polk</span>, <span class="refTitle">"Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile"</span>, <span class="seriesInfo">RFC 5280</span>, <span class="seriesInfo">DOI 10.17487/RFC5280</span>, <time datetime="2008-05" class="refDate">May 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5280">https://www.rfc-editor.org/rfc/rfc5280</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC7519">[RFC7519]</dt>
-        <dd>
-<span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">N. Sakimura</span>, <span class="refTitle">"JSON Web Token (JWT)"</span>, <span class="seriesInfo">RFC 7519</span>, <span class="seriesInfo">DOI 10.17487/RFC7519</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7519">https://www.rfc-editor.org/rfc/rfc7519</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC8392">[RFC8392]</dt>
-      <dd>
-<span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Wahlstroem, E.</span>, <span class="refAuthor">Erdtman, S.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"CBOR Web Token (CWT)"</span>, <span class="seriesInfo">RFC 8392</span>, <span class="seriesInfo">DOI 10.17487/RFC8392</span>, <time datetime="2018-05" class="refDate">May 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8392">https://www.rfc-editor.org/rfc/rfc8392</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-</dl>
-</section>
-<section id="section-17.2">
-        <h3 id="name-informative-references">
-<a href="#section-17.2" class="section-number selfRef">17.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
-        </h3>
-<dl class="references">
-<dt id="CCC-DeepDive">[CCC-DeepDive]</dt>
-        <dd>
-<span class="refAuthor">Confidential Computing Consortium</span>, <span class="refTitle">"Confidential Computing Deep Dive"</span>, <span>n.d.</span>, <span>&lt;<a href="https://confidentialcomputing.io/whitepaper-02-latest">https://confidentialcomputing.io/whitepaper-02-latest</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="CTAP">[CTAP]</dt>
-        <dd>
-<span class="refAuthor">FIDO Alliance</span>, <span class="refTitle">"Client to Authenticator Protocol"</span>, <span>n.d.</span>, <span>&lt;<a href="https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-client-to-authenticator-protocol-v2.0-id-20180227.html">https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-client-to-authenticator-protocol-v2.0-id-20180227.html</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="I-D.birkholz-rats-tuda">[I-D.birkholz-rats-tuda]</dt>
-        <dd>
-<span class="refAuthor">Fuchs, A.</span>, <span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">McDonald, I. E.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Time-Based Uni-Directional Attestation"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-birkholz-rats-tuda-07</span>, <time datetime="2022-07-10" class="refDate">10 July 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-birkholz-rats-tuda-07">https://datatracker.ietf.org/doc/html/draft-birkholz-rats-tuda-07</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="I-D.birkholz-rats-uccs">[I-D.birkholz-rats-uccs]</dt>
-        <dd>
-<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">O'Donoghue, J.</span>, <span class="refAuthor">Cam-Winget, N.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"A CBOR Tag for Unprotected CWT Claims Sets"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-birkholz-rats-uccs-03</span>, <time datetime="2021-03-08" class="refDate">8 March 2021</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-birkholz-rats-uccs-03">https://datatracker.ietf.org/doc/html/draft-birkholz-rats-uccs-03</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="I-D.ietf-rats-daa">[I-D.ietf-rats-daa]</dt>
-        <dd>
-<span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Newton, C.</span>, <span class="refAuthor">Chen, L.</span>, and <span class="refAuthor">D. Thaler</span>, <span class="refTitle">"Direct Anonymous Attestation for the Remote Attestation Procedures Architecture"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-rats-daa-01</span>, <time datetime="2022-07-10" class="refDate">10 July 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-rats-daa-01">https://datatracker.ietf.org/doc/html/draft-ietf-rats-daa-01</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="I-D.ietf-teep-architecture">[I-D.ietf-teep-architecture]</dt>
-        <dd>
-<span class="refAuthor">Pei, M.</span>, <span class="refAuthor">Tschofenig, H.</span>, <span class="refAuthor">Thaler, D.</span>, and <span class="refAuthor">D. Wheeler</span>, <span class="refTitle">"Trusted Execution Environment Provisioning (TEEP) Architecture"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teep-architecture-18</span>, <time datetime="2022-07-11" class="refDate">11 July 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teep-architecture-18">https://datatracker.ietf.org/doc/html/draft-ietf-teep-architecture-18</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="I-D.tschofenig-rats-psa-token">[I-D.tschofenig-rats-psa-token]</dt>
-        <dd>
-<span class="refAuthor">Tschofenig, H.</span>, <span class="refAuthor">Frost, S.</span>, <span class="refAuthor">Brossard, M.</span>, <span class="refAuthor">Shaw, A.</span>, and <span class="refAuthor">T. Fossati</span>, <span class="refTitle">"Arm's Platform Security Architecture (PSA) Attestation Token"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-tschofenig-rats-psa-token-09</span>, <time datetime="2022-03-07" class="refDate">7 March 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-tschofenig-rats-psa-token-09">https://datatracker.ietf.org/doc/html/draft-tschofenig-rats-psa-token-09</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="I-D.tschofenig-tls-cwt">[I-D.tschofenig-tls-cwt]</dt>
-        <dd>
-<span class="refAuthor">Tschofenig, H.</span> and <span class="refAuthor">M. Brossard</span>, <span class="refTitle">"Using CBOR Web Tokens (CWTs) in Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-tschofenig-tls-cwt-02</span>, <time datetime="2020-07-13" class="refDate">13 July 2020</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-tschofenig-tls-cwt-02">https://datatracker.ietf.org/doc/html/draft-tschofenig-tls-cwt-02</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="NIST-800-57-p1">[NIST-800-57-p1]</dt>
-        <dd>
-<span class="refAuthor">Barker, E.</span>, <span class="refTitle">"Recommendation for Key Managemement: Part 1 - General"</span>, <time datetime="2020-05" class="refDate">May 2020</time>, <span>&lt;<a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r5.pdf">https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-57pt1r5.pdf</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="OPCUA">[OPCUA]</dt>
-        <dd>
-<span class="refAuthor">OPC Foundation</span>, <span class="refTitle">"OPC Unified Architecture Specification, Part 2: Security Model, Release 1.03"</span>, <span class="seriesInfo">OPC 10000-2 </span>, <time datetime="2015-11-25" class="refDate">25 November 2015</time>, <span>&lt;<a href="https://opcfoundation.org/developer-tools/specifications-unified-architecture/part-2-security-model/">https://opcfoundation.org/developer-tools/specifications-unified-architecture/part-2-security-model/</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC4086">[RFC4086]</dt>
-        <dd>
-<span class="refAuthor">Eastlake 3rd, D.</span>, <span class="refAuthor">Schiller, J.</span>, and <span class="refAuthor">S. Crocker</span>, <span class="refTitle">"Randomness Requirements for Security"</span>, <span class="seriesInfo">BCP 106</span>, <span class="seriesInfo">RFC 4086</span>, <span class="seriesInfo">DOI 10.17487/RFC4086</span>, <time datetime="2005-06" class="refDate">June 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4086">https://www.rfc-editor.org/rfc/rfc4086</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC4949">[RFC4949]</dt>
-        <dd>
-<span class="refAuthor">Shirey, R.</span>, <span class="refTitle">"Internet Security Glossary, Version 2"</span>, <span class="seriesInfo">FYI 36</span>, <span class="seriesInfo">RFC 4949</span>, <span class="seriesInfo">DOI 10.17487/RFC4949</span>, <time datetime="2007-08" class="refDate">August 2007</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4949">https://www.rfc-editor.org/rfc/rfc4949</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC5209">[RFC5209]</dt>
-        <dd>
-<span class="refAuthor">Sangster, P.</span>, <span class="refAuthor">Khosravi, H.</span>, <span class="refAuthor">Mani, M.</span>, <span class="refAuthor">Narayan, K.</span>, and <span class="refAuthor">J. Tardo</span>, <span class="refTitle">"Network Endpoint Assessment (NEA): Overview and Requirements"</span>, <span class="seriesInfo">RFC 5209</span>, <span class="seriesInfo">DOI 10.17487/RFC5209</span>, <time datetime="2008-06" class="refDate">June 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5209">https://www.rfc-editor.org/rfc/rfc5209</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC6024">[RFC6024]</dt>
-        <dd>
-<span class="refAuthor">Reddy, R.</span> and <span class="refAuthor">C. Wallace</span>, <span class="refTitle">"Trust Anchor Management Requirements"</span>, <span class="seriesInfo">RFC 6024</span>, <span class="seriesInfo">DOI 10.17487/RFC6024</span>, <time datetime="2010-10" class="refDate">October 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc6024">https://www.rfc-editor.org/rfc/rfc6024</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC8322">[RFC8322]</dt>
-        <dd>
-<span class="refAuthor">Field, J.</span>, <span class="refAuthor">Banghart, S.</span>, and <span class="refAuthor">D. Waltermire</span>, <span class="refTitle">"Resource-Oriented Lightweight Information Exchange (ROLIE)"</span>, <span class="seriesInfo">RFC 8322</span>, <span class="seriesInfo">DOI 10.17487/RFC8322</span>, <time datetime="2018-02" class="refDate">February 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8322">https://www.rfc-editor.org/rfc/rfc8322</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="strengthoffunction">[strengthoffunction]</dt>
-        <dd>
-<span class="refAuthor">NISC</span>, <span class="refTitle">"Strength of Function"</span>, <span>n.d.</span>, <span>&lt;<a href="https://csrc.nist.gov/glossary/term/strength_of_function">https://csrc.nist.gov/glossary/term/strength_of_function</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="TCG-DICE">[TCG-DICE]</dt>
-        <dd>
-<span class="refAuthor">Trusted Computing Group</span>, <span class="refTitle">"DICE Certificate Profiles"</span>, <span>n.d.</span>, <span>&lt;<a href="https://trustedcomputinggroup.org/wp-content/uploads/DICE-Certificate-Profiles-r01_3june2020-1.pdf">https://trustedcomputinggroup.org/wp-content/uploads/DICE-Certificate-Profiles-r01_3june2020-1.pdf</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="TCG-DICE-SIBDA">[TCG-DICE-SIBDA]</dt>
-        <dd>
-<span class="refAuthor">Trusted Computing Group</span>, <span class="refTitle">"Symmetric Identity Based Device Attestation for DICE"</span>, <time datetime="2019-07-24" class="refDate">24 July 2019</time>, <span>&lt;<a href="https://trustedcomputinggroup.org/wp-content/uploads/TCG_DICE_SymIDAttest_v1_r0p94_pubrev.pdf">https://trustedcomputinggroup.org/wp-content/uploads/TCG_DICE_SymIDAttest_v1_r0p94_pubrev.pdf</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="TCGarch">[TCGarch]</dt>
-        <dd>
-<span class="refAuthor">Trusted Computing Group</span>, <span class="refTitle">"Trusted Platform Module Library - Part 1: Architecture"</span>, <time datetime="2019-11-08" class="refDate">8 November 2019</time>, <span>&lt;<a href="https://trustedcomputinggroup.org/wp-content/uploads/TCG_TPM2_r1p59_Part1_Architecture_pub.pdf">https://trustedcomputinggroup.org/wp-content/uploads/TCG_TPM2_r1p59_Part1_Architecture_pub.pdf</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="WebAuthN">[WebAuthN]</dt>
-      <dd>
-<span class="refAuthor">W3C</span>, <span class="refTitle">"Web Authentication: An API for accessing Public Key Credentials"</span>, <span>n.d.</span>, <span>&lt;<a href="https://www.w3.org/TR/webauthn-1/">https://www.w3.org/TR/webauthn-1/</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-</dl>
-</section>
-</section>
 <div id="contributors">
-<section id="appendix-A">
+<section id="appendix-B">
       <h2 id="name-contributors">
 <a href="#name-contributors" class="section-name selfRef">Contributors</a>
       </h2>
@@ -4370,7 +4384,7 @@ in terms of <code>time(RX_v)-time(RG_v)</code>, then the Relying Party can check
 </section>
 </div>
 <div id="authors-addresses">
-<section id="appendix-B">
+<section id="appendix-C">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>

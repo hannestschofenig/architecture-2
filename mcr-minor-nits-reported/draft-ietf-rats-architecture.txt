@@ -5,14 +5,14 @@
 RATS Working Group                                           H. Birkholz
 Internet-Draft                                            Fraunhofer SIT
 Intended status: Informational                                 D. Thaler
-Expires: 25 January 2023                                       Microsoft
+Expires: 11 March 2023                                         Microsoft
                                                            M. Richardson
                                                 Sandelman Software Works
                                                                 N. Smith
                                                                    Intel
                                                                   W. Pan
                                                      Huawei Technologies
-                                                            24 July 2022
+                                                        7 September 2022
 
 
                Remote Attestation Procedures Architecture
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 January 2023.
+   This Internet-Draft will expire on 11 March 2023.
 
 Copyright Notice
 
@@ -123,15 +123,15 @@ Table of Contents
    13. IANA Considerations
    14. Acknowledgments
    15. Notable Contributions
-   16. Appendix A: Time Considerations
-     16.1.  Example 1: Timestamp-based Passport Model Example
-     16.2.  Example 2: Nonce-based Passport Model Example
-     16.3.  Example 3: Epoch ID-based Passport Model Example
-     16.4.  Example 4: Timestamp-based Background-Check Model Example
-     16.5.  Example 5: Nonce-based Background-Check Model Example
-   17. References
-     17.1.  Normative References
-     17.2.  Informative References
+   16. References
+     16.1.  Normative References
+     16.2.  Informative References
+   Appendix A.  Time Considerations
+     A.1.  Example 1: Timestamp-based Passport Model Example
+     A.2.  Example 2: Nonce-based Passport Model Example
+     A.3.  Example 3: Epoch ID-based Passport Model Example
+     A.4.  Example 4: Timestamp-based Background-Check Model Example
+     A.5.  Example 5: Nonce-based Background-Check Model Example
    Contributors
    Authors' Addresses
 
@@ -181,7 +181,7 @@ Table of Contents
    Amongst other things, this document is about trust and
    trustworthiness.  Trust is a choice one makes about another system.
    Trustworthiness is a quality about the other system that can be used
-   in making one's decision to trust it or not.  This is subtle
+   in making one's decision to trust it or not.  This is a subtle
    difference and being familiar with the difference is crucial for
    using this document.  Additionally, the concepts of freshness and
    trust relationships with respect to RATS are elaborated on to enable
@@ -689,6 +689,17 @@ Table of Contents
    Attestation Results of other Attesters to the outside Verifier,
    whether in the same conveyance protocol as part of the Evidence or
    not.
+
+   As explained in Section 4, there are a variety of roles in the RATS
+   architecture and they are defined by a unique combination of
+   artifacts they produce and consume.  Conversely, artifacts are also
+   defined by the roles that produce or consume them.  To produce an
+   artifact means that a given role introduces it into the RATS
+   architecture.  To consume an artifact means that a given role has
+   responsibility for processing it in the RATS architecture.  Roles
+   also have the ability to perform additional actions such caching or
+   forwarding artifacts as opaque data.  As depicted in Section 5, these
+   additional actions can be performed by several roles.
 
 4.  Terminology
 
@@ -1561,10 +1572,11 @@ Table of Contents
 10.4.  Discussion
 
    Implicit and explicit timekeeping can be combined into hybrid
-   mechanisms.  For example, if clocks exist and are considered
-   trustworthy but are not synchronized, a nonce-based exchange may be
-   used to determine the (relative) time offset between the involved
-   peers, followed by any number of timestamp based exchanges.
+   mechanisms.  For example, if clocks exist within the Attesting
+   Environment and are considered trustworthy (tamper-proof) but are not
+   synchronized, a nonce-based exchange may be used to determine the
+   (relative) time offset between the involved peers, followed by any
+   number of timestamp based exchanges.
 
    It is important to note that the actual values in Claims might have
    been generated long before the Claims are signed.  If so, it is the
@@ -1573,7 +1585,7 @@ Table of Contents
    might have been saved to secure storage until network connectivity is
    established to the remote Verifier and a nonce is obtained.
 
-   A more detailed discussion with examples appears in Section 16.
+   A more detailed discussion with examples appears in Appendix A.
 
    For a discussion on the security of epoch IDs see Section 12.3.
 
@@ -1798,6 +1810,17 @@ Table of Contents
    then the relaying entity should not expect to have access to the
    Evidence.
 
+   The RATS architecture allows for an entity to function in multiple
+   roles (Section 6) and for composite devices (Section 3.3).
+   Implementers need to evaluate their designs to ensure that the
+   assumed security properties of the individual components and roles
+   still hold despite the lack of separation, and that emergent risk is
+   not introduced.  The specifics of this evaluation will depend on the
+   implementation and the use case and hence is out of scope for this
+   document.  Isolation mechanisms in software or hardware that separate
+   Attesting Environments and Target Environments Section 3.1 can
+   support an implementer's evaluation and resulting design decisions.
+
 12.3.  Epoch ID-based Attestation
 
    Epoch IDs, described in Section 10.3, can be tampered with, replayed,
@@ -1874,7 +1897,143 @@ Table of Contents
    weekly design team meetings that added precision and depth to several
    sections.
 
-16.  Appendix A: Time Considerations
+16.  References
+
+16.1.  Normative References
+
+   [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
+              Housley, R., and W. Polk, "Internet X.509 Public Key
+              Infrastructure Certificate and Certificate Revocation List
+              (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
+              <https://www.rfc-editor.org/rfc/rfc5280>.
+
+   [RFC7519]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web Token
+              (JWT)", RFC 7519, DOI 10.17487/RFC7519, May 2015,
+              <https://www.rfc-editor.org/rfc/rfc7519>.
+
+   [RFC8392]  Jones, M., Wahlstroem, E., Erdtman, S., and H. Tschofenig,
+              "CBOR Web Token (CWT)", RFC 8392, DOI 10.17487/RFC8392,
+              May 2018, <https://www.rfc-editor.org/rfc/rfc8392>.
+
+16.2.  Informative References
+
+   [CCC-DeepDive]
+              Confidential Computing Consortium, "Confidential Computing
+              Deep Dive", n.d.,
+              <https://confidentialcomputing.io/whitepaper-02-latest>.
+
+   [CTAP]     FIDO Alliance, "Client to Authenticator Protocol", n.d.,
+              <https://fidoalliance.org/specs/fido-v2.0-id-20180227/
+              fido-client-to-authenticator-protocol-v2.0-id-
+              20180227.html>.
+
+   [I-D.birkholz-rats-tuda]
+              Fuchs, A., Birkholz, H., McDonald, I. E., and C. Bormann,
+              "Time-Based Uni-Directional Attestation", Work in
+              Progress, Internet-Draft, draft-birkholz-rats-tuda-07, 10
+              July 2022, <https://datatracker.ietf.org/doc/html/draft-
+              birkholz-rats-tuda-07>.
+
+   [I-D.birkholz-rats-uccs]
+              Birkholz, H., O'Donoghue, J., Cam-Winget, N., and C.
+              Bormann, "A CBOR Tag for Unprotected CWT Claims Sets",
+              Work in Progress, Internet-Draft, draft-birkholz-rats-
+              uccs-03, 8 March 2021,
+              <https://datatracker.ietf.org/doc/html/draft-birkholz-
+              rats-uccs-03>.
+
+   [I-D.ietf-rats-daa]
+              Birkholz, H., Newton, C., Chen, L., and D. Thaler, "Direct
+              Anonymous Attestation for the Remote Attestation
+              Procedures Architecture", Work in Progress, Internet-
+              Draft, draft-ietf-rats-daa-01, 10 July 2022,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-rats-
+              daa-01>.
+
+   [I-D.ietf-teep-architecture]
+              Pei, M., Tschofenig, H., Thaler, D., and D. Wheeler,
+              "Trusted Execution Environment Provisioning (TEEP)
+              Architecture", Work in Progress, Internet-Draft, draft-
+              ietf-teep-architecture-18, 11 July 2022,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-teep-
+              architecture-18>.
+
+   [I-D.tschofenig-rats-psa-token]
+              Tschofenig, H., Frost, S., Brossard, M., Shaw, A., and T.
+              Fossati, "Arm's Platform Security Architecture (PSA)
+              Attestation Token", Work in Progress, Internet-Draft,
+              draft-tschofenig-rats-psa-token-10, 6 September 2022,
+              <https://datatracker.ietf.org/doc/html/draft-tschofenig-
+              rats-psa-token-10>.
+
+   [I-D.tschofenig-tls-cwt]
+              Tschofenig, H. and M. Brossard, "Using CBOR Web Tokens
+              (CWTs) in Transport Layer Security (TLS) and Datagram
+              Transport Layer Security (DTLS)", Work in Progress,
+              Internet-Draft, draft-tschofenig-tls-cwt-02, 13 July 2020,
+              <https://datatracker.ietf.org/doc/html/draft-tschofenig-
+              tls-cwt-02>.
+
+   [NIST-800-57-p1]
+              Barker, E., "Recommendation for Key Managemement: Part 1 -
+              General", May 2020,
+              <https://nvlpubs.nist.gov/nistpubs/SpecialPublications/
+              NIST.SP.800-57pt1r5.pdf>.
+
+   [OPCUA]    OPC Foundation, "OPC Unified Architecture Specification,
+              Part 2: Security Model, Release 1.03", OPC 10000-2 , 25
+              November 2015, <https://opcfoundation.org/developer-tools/
+              specifications-unified-architecture/part-2-security-
+              model/>.
+
+   [RFC4086]  Eastlake 3rd, D., Schiller, J., and S. Crocker,
+              "Randomness Requirements for Security", BCP 106, RFC 4086,
+              DOI 10.17487/RFC4086, June 2005,
+              <https://www.rfc-editor.org/rfc/rfc4086>.
+
+   [RFC4949]  Shirey, R., "Internet Security Glossary, Version 2",
+              FYI 36, RFC 4949, DOI 10.17487/RFC4949, August 2007,
+              <https://www.rfc-editor.org/rfc/rfc4949>.
+
+   [RFC5209]  Sangster, P., Khosravi, H., Mani, M., Narayan, K., and J.
+              Tardo, "Network Endpoint Assessment (NEA): Overview and
+              Requirements", RFC 5209, DOI 10.17487/RFC5209, June 2008,
+              <https://www.rfc-editor.org/rfc/rfc5209>.
+
+   [RFC6024]  Reddy, R. and C. Wallace, "Trust Anchor Management
+              Requirements", RFC 6024, DOI 10.17487/RFC6024, October
+              2010, <https://www.rfc-editor.org/rfc/rfc6024>.
+
+   [RFC8322]  Field, J., Banghart, S., and D. Waltermire, "Resource-
+              Oriented Lightweight Information Exchange (ROLIE)",
+              RFC 8322, DOI 10.17487/RFC8322, February 2018,
+              <https://www.rfc-editor.org/rfc/rfc8322>.
+
+   [strengthoffunction]
+              NISC, "Strength of Function", n.d.,
+              <https://csrc.nist.gov/glossary/term/
+              strength_of_function>.
+
+   [TCG-DICE] Trusted Computing Group, "DICE Certificate Profiles",
+              n.d., <https://trustedcomputinggroup.org/wp-
+              content/uploads/DICE-Certificate-Profiles-
+              r01_3june2020-1.pdf>.
+
+   [TCG-DICE-SIBDA]
+              Trusted Computing Group, "Symmetric Identity Based Device
+              Attestation for DICE", 24 July 2019,
+              <https://trustedcomputinggroup.org/wp-content/uploads/
+              TCG_DICE_SymIDAttest_v1_r0p94_pubrev.pdf>.
+
+   [TCGarch]  Trusted Computing Group, "Trusted Platform Module Library
+              - Part 1: Architecture", 8 November 2019,
+              <https://trustedcomputinggroup.org/wp-content/uploads/
+              TCG_TPM2_r1p59_Part1_Architecture_pub.pdf>.
+
+   [WebAuthN] W3C, "Web Authentication: An API for accessing Public Key
+              Credentials", n.d., <https://www.w3.org/TR/webauthn-1/>.
+
+Appendix A.  Time Considerations
 
    Section 10 discussed various issues and requirements around freshness
    of evidence, and summarized three approaches that might be used by
@@ -1956,7 +2115,7 @@ Table of Contents
    example, the notation Evidence{foo} indicates that 'foo' is contained
    in the Evidence and is thus covered by its signature.
 
-16.1.  Example 1: Timestamp-based Passport Model Example
+A.1.  Example 1: Timestamp-based Passport Model Example
 
    The following example illustrates a hypothetical Passport Model
    solution that uses timestamps and requires roughly synchronized
@@ -2018,7 +2177,7 @@ Table of Contents
    However, if the Attestation Result contains an expiry time time(RX_v)
    then it could explicitly check time(OP_r) < time(RX_v).
 
-16.2.  Example 2: Nonce-based Passport Model Example
+A.2.  Example 2: Nonce-based Passport Model Example
 
    The following example illustrates a hypothetical Passport Model
    solution that uses nonces instead of timestamps.  Compared to the
@@ -2094,7 +2253,7 @@ Table of Contents
    validity lifetime in terms of time(RX_v)-time(RG_v), then the Relying
    Party can check time(OP_r)-time(NS_r) < time(RX_v)-time(RG_v).
 
-16.3.  Example 3: Epoch ID-based Passport Model Example
+A.3.  Example 3: Epoch ID-based Passport Model Example
 
    The example in Figure 10 illustrates a hypothetical Passport Model
    solution that uses epoch IDs instead of nonces or timestamps.
@@ -2161,7 +2320,7 @@ Table of Contents
 
                   Figure 10: Epoch ID-based Passport Model
 
-16.4.  Example 4: Timestamp-based Background-Check Model Example
+A.4.  Example 4: Timestamp-based Background-Check Model Example
 
    The following example illustrates a hypothetical Background-Check
    Model solution that uses timestamps and requires roughly synchronized
@@ -2194,7 +2353,7 @@ Table of Contents
    The time considerations in this example are equivalent to those
    discussed under Example 1 above.
 
-16.5.  Example 5: Nonce-based Background-Check Model Example
+A.5.  Example 5: Nonce-based Background-Check Model Example
 
    The following example illustrates a hypothetical Background-Check
    Model solution that uses nonces and thus does not require that any
@@ -2240,142 +2399,6 @@ Table of Contents
    Result to remain valid.  Thus, if the Attestation Result sends a
    validity lifetime in terms of time(RX_v)-time(RG_v), then the Relying
    Party can check time(OP_r)-time(ER_r) < time(RX_v)-time(RG_v).
-
-17.  References
-
-17.1.  Normative References
-
-   [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
-              Housley, R., and W. Polk, "Internet X.509 Public Key
-              Infrastructure Certificate and Certificate Revocation List
-              (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
-              <https://www.rfc-editor.org/rfc/rfc5280>.
-
-   [RFC7519]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web Token
-              (JWT)", RFC 7519, DOI 10.17487/RFC7519, May 2015,
-              <https://www.rfc-editor.org/rfc/rfc7519>.
-
-   [RFC8392]  Jones, M., Wahlstroem, E., Erdtman, S., and H. Tschofenig,
-              "CBOR Web Token (CWT)", RFC 8392, DOI 10.17487/RFC8392,
-              May 2018, <https://www.rfc-editor.org/rfc/rfc8392>.
-
-17.2.  Informative References
-
-   [CCC-DeepDive]
-              Confidential Computing Consortium, "Confidential Computing
-              Deep Dive", n.d.,
-              <https://confidentialcomputing.io/whitepaper-02-latest>.
-
-   [CTAP]     FIDO Alliance, "Client to Authenticator Protocol", n.d.,
-              <https://fidoalliance.org/specs/fido-v2.0-id-20180227/
-              fido-client-to-authenticator-protocol-v2.0-id-
-              20180227.html>.
-
-   [I-D.birkholz-rats-tuda]
-              Fuchs, A., Birkholz, H., McDonald, I. E., and C. Bormann,
-              "Time-Based Uni-Directional Attestation", Work in
-              Progress, Internet-Draft, draft-birkholz-rats-tuda-07, 10
-              July 2022, <https://datatracker.ietf.org/doc/html/draft-
-              birkholz-rats-tuda-07>.
-
-   [I-D.birkholz-rats-uccs]
-              Birkholz, H., O'Donoghue, J., Cam-Winget, N., and C.
-              Bormann, "A CBOR Tag for Unprotected CWT Claims Sets",
-              Work in Progress, Internet-Draft, draft-birkholz-rats-
-              uccs-03, 8 March 2021,
-              <https://datatracker.ietf.org/doc/html/draft-birkholz-
-              rats-uccs-03>.
-
-   [I-D.ietf-rats-daa]
-              Birkholz, H., Newton, C., Chen, L., and D. Thaler, "Direct
-              Anonymous Attestation for the Remote Attestation
-              Procedures Architecture", Work in Progress, Internet-
-              Draft, draft-ietf-rats-daa-01, 10 July 2022,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-rats-
-              daa-01>.
-
-   [I-D.ietf-teep-architecture]
-              Pei, M., Tschofenig, H., Thaler, D., and D. Wheeler,
-              "Trusted Execution Environment Provisioning (TEEP)
-              Architecture", Work in Progress, Internet-Draft, draft-
-              ietf-teep-architecture-18, 11 July 2022,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-teep-
-              architecture-18>.
-
-   [I-D.tschofenig-rats-psa-token]
-              Tschofenig, H., Frost, S., Brossard, M., Shaw, A., and T.
-              Fossati, "Arm's Platform Security Architecture (PSA)
-              Attestation Token", Work in Progress, Internet-Draft,
-              draft-tschofenig-rats-psa-token-09, 7 March 2022,
-              <https://datatracker.ietf.org/doc/html/draft-tschofenig-
-              rats-psa-token-09>.
-
-   [I-D.tschofenig-tls-cwt]
-              Tschofenig, H. and M. Brossard, "Using CBOR Web Tokens
-              (CWTs) in Transport Layer Security (TLS) and Datagram
-              Transport Layer Security (DTLS)", Work in Progress,
-              Internet-Draft, draft-tschofenig-tls-cwt-02, 13 July 2020,
-              <https://datatracker.ietf.org/doc/html/draft-tschofenig-
-              tls-cwt-02>.
-
-   [NIST-800-57-p1]
-              Barker, E., "Recommendation for Key Managemement: Part 1 -
-              General", May 2020,
-              <https://nvlpubs.nist.gov/nistpubs/SpecialPublications/
-              NIST.SP.800-57pt1r5.pdf>.
-
-   [OPCUA]    OPC Foundation, "OPC Unified Architecture Specification,
-              Part 2: Security Model, Release 1.03", OPC 10000-2 , 25
-              November 2015, <https://opcfoundation.org/developer-tools/
-              specifications-unified-architecture/part-2-security-
-              model/>.
-
-   [RFC4086]  Eastlake 3rd, D., Schiller, J., and S. Crocker,
-              "Randomness Requirements for Security", BCP 106, RFC 4086,
-              DOI 10.17487/RFC4086, June 2005,
-              <https://www.rfc-editor.org/rfc/rfc4086>.
-
-   [RFC4949]  Shirey, R., "Internet Security Glossary, Version 2",
-              FYI 36, RFC 4949, DOI 10.17487/RFC4949, August 2007,
-              <https://www.rfc-editor.org/rfc/rfc4949>.
-
-   [RFC5209]  Sangster, P., Khosravi, H., Mani, M., Narayan, K., and J.
-              Tardo, "Network Endpoint Assessment (NEA): Overview and
-              Requirements", RFC 5209, DOI 10.17487/RFC5209, June 2008,
-              <https://www.rfc-editor.org/rfc/rfc5209>.
-
-   [RFC6024]  Reddy, R. and C. Wallace, "Trust Anchor Management
-              Requirements", RFC 6024, DOI 10.17487/RFC6024, October
-              2010, <https://www.rfc-editor.org/rfc/rfc6024>.
-
-   [RFC8322]  Field, J., Banghart, S., and D. Waltermire, "Resource-
-              Oriented Lightweight Information Exchange (ROLIE)",
-              RFC 8322, DOI 10.17487/RFC8322, February 2018,
-              <https://www.rfc-editor.org/rfc/rfc8322>.
-
-   [strengthoffunction]
-              NISC, "Strength of Function", n.d.,
-              <https://csrc.nist.gov/glossary/term/
-              strength_of_function>.
-
-   [TCG-DICE] Trusted Computing Group, "DICE Certificate Profiles",
-              n.d., <https://trustedcomputinggroup.org/wp-
-              content/uploads/DICE-Certificate-Profiles-
-              r01_3june2020-1.pdf>.
-
-   [TCG-DICE-SIBDA]
-              Trusted Computing Group, "Symmetric Identity Based Device
-              Attestation for DICE", 24 July 2019,
-              <https://trustedcomputinggroup.org/wp-content/uploads/
-              TCG_DICE_SymIDAttest_v1_r0p94_pubrev.pdf>.
-
-   [TCGarch]  Trusted Computing Group, "Trusted Platform Module Library
-              - Part 1: Architecture", 8 November 2019,
-              <https://trustedcomputinggroup.org/wp-content/uploads/
-              TCG_TPM2_r1p59_Part1_Architecture_pub.pdf>.
-
-   [WebAuthN] W3C, "Web Authentication: An API for accessing Public Key
-              Credentials", n.d., <https://www.w3.org/TR/webauthn-1/>.
 
 Contributors
 
