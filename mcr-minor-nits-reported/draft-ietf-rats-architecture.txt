@@ -5,14 +5,14 @@
 RATS Working Group                                           H. Birkholz
 Internet-Draft                                            Fraunhofer SIT
 Intended status: Informational                                 D. Thaler
-Expires: 11 March 2023                                         Microsoft
+Expires: 13 March 2023                                         Microsoft
                                                            M. Richardson
                                                 Sandelman Software Works
                                                                 N. Smith
                                                                    Intel
                                                                   W. Pan
                                                      Huawei Technologies
-                                                        7 September 2022
+                                                        9 September 2022
 
 
                Remote Attestation Procedures Architecture
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 11 March 2023.
+   This Internet-Draft will expire on 13 March 2023.
 
 Copyright Notice
 
@@ -1946,9 +1946,9 @@ Table of Contents
               Birkholz, H., Newton, C., Chen, L., and D. Thaler, "Direct
               Anonymous Attestation for the Remote Attestation
               Procedures Architecture", Work in Progress, Internet-
-              Draft, draft-ietf-rats-daa-01, 10 July 2022,
+              Draft, draft-ietf-rats-daa-02, 7 September 2022,
               <https://datatracker.ietf.org/doc/html/draft-ietf-rats-
-              daa-01>.
+              daa-02>.
 
    [I-D.ietf-teep-architecture]
               Pei, M., Tschofenig, H., Thaler, D., and D. Wheeler,
