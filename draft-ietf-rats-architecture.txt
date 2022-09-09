@@ -5,14 +5,14 @@
 RATS Working Group                                           H. Birkholz
 Internet-Draft                                            Fraunhofer SIT
 Intended status: Informational                                 D. Thaler
-Expires: 18 February 2023                                      Microsoft
+Expires: 13 March 2023                                         Microsoft
                                                            M. Richardson
                                                 Sandelman Software Works
                                                                 N. Smith
                                                                    Intel
                                                                   W. Pan
                                                      Huawei Technologies
-                                                          17 August 2022
+                                                        9 September 2022
 
 
                Remote Attestation Procedures Architecture
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 February 2023.
+   This Internet-Draft will expire on 13 March 2023.
 
 Copyright Notice
 
@@ -181,7 +181,7 @@ Table of Contents
    Amongst other things, this document is about trust and
    trustworthiness.  Trust is a choice one makes about another system.
    Trustworthiness is a quality about the other system that can be used
-   in making one's decision to trust it or not.  This is subtle
+   in making one's decision to trust it or not.  This is a subtle
    difference and being familiar with the difference is crucial for
    using this document.  Additionally, the concepts of freshness and
    trust relationships with respect to RATS are elaborated on to enable
@@ -1572,10 +1572,11 @@ Table of Contents
 10.4.  Discussion
 
    Implicit and explicit timekeeping can be combined into hybrid
-   mechanisms.  For example, if clocks exist and are considered
-   trustworthy but are not synchronized, a nonce-based exchange may be
-   used to determine the (relative) time offset between the involved
-   peers, followed by any number of timestamp based exchanges.
+   mechanisms.  For example, if clocks exist within the Attesting
+   Environment and are considered trustworthy (tamper-proof) but are not
+   synchronized, a nonce-based exchange may be used to determine the
+   (relative) time offset between the involved peers, followed by any
+   number of timestamp based exchanges.
 
    It is important to note that the actual values in Claims might have
    been generated long before the Claims are signed.  If so, it is the
@@ -1945,9 +1946,9 @@ Table of Contents
               Birkholz, H., Newton, C., Chen, L., and D. Thaler, "Direct
               Anonymous Attestation for the Remote Attestation
               Procedures Architecture", Work in Progress, Internet-
-              Draft, draft-ietf-rats-daa-01, 10 July 2022,
+              Draft, draft-ietf-rats-daa-02, 7 September 2022,
               <https://datatracker.ietf.org/doc/html/draft-ietf-rats-
-              daa-01>.
+              daa-02>.
 
    [I-D.ietf-teep-architecture]
               Pei, M., Tschofenig, H., Thaler, D., and D. Wheeler,
@@ -1961,9 +1962,9 @@ Table of Contents
               Tschofenig, H., Frost, S., Brossard, M., Shaw, A., and T.
               Fossati, "Arm's Platform Security Architecture (PSA)
               Attestation Token", Work in Progress, Internet-Draft,
-              draft-tschofenig-rats-psa-token-09, 7 March 2022,
+              draft-tschofenig-rats-psa-token-10, 6 September 2022,
               <https://datatracker.ietf.org/doc/html/draft-tschofenig-
-              rats-psa-token-09>.
+              rats-psa-token-10>.
 
    [I-D.tschofenig-tls-cwt]
               Tschofenig, H. and M. Brossard, "Using CBOR Web Tokens
