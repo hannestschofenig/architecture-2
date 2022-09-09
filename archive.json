@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-09-07T07:51:41.174994+00:00",
+  "timestamp": "2022-09-09T19:42:13.571537+00:00",
   "repo": "ietf-rats-wg/architecture",
   "labels": [
     {
@@ -6675,6 +6675,58 @@
       "body": "As per discussion at: https://mailarchive.ietf.org/arch/msg/rats/REAexJRlAPnRCofS--8r8Zhcxgo/  consider replacing the chassis example with an a mobile example.\r\n",
       "createdAt": "2022-08-27T13:04:13Z",
       "updatedAt": "2022-08-27T13:04:13Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 433,
+      "id": "I_kwDODT6R7s5RWUkG",
+      "title": "Mgmt review: layered attestation diagram has odd numbering",
+      "url": "https://github.com/ietf-rats-wg/architecture/issues/433",
+      "state": "OPEN",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "dthaler"
+      ],
+      "labels": [],
+      "body": ">     > As a very minor nit, I'm surprised that the numbering of the relying\r\n>     > parties is not the other way round, since presumably the flow talks to\r\n>     > relying party 2 before relying party 1.  As alternative suggestion\r\n>     > could be to label them something like \"Main Relying Party\" and\r\n>     > \"Secondary Relying Party\".\r\n> \r\n> I'm gonna let Dave Thaler argue the final point here.\r\n> My understanding is that the commuication starts with talking to Relying\r\n> Party 1.  It says, something like,\r\n> \r\n>   \"Halt! Who goes there! Answer me These Questions\r\n> Three!^W^W^W^W^W\r\n>    Show me the Evidence that you are vermin free!\"\r\n> \r\n> at which point, the Attester, having no fresh Attestation results from\r\n> Relying Party 2, goes over to the other attestation flow and gathers what it\r\n> needs.\r\n> \r\n> In the TEEP case, the Relying Party 1 (like a Bank) is looking that a particular\r\n> Trusted\r\n> Application is loaded in the TEE (like a secure wallet).  If it isn't, then\r\n> the mobile phone has to present Evidence to the TAM that it is suitably\r\n> vermin free in order to load the wallet app.\r\n\r\nOkay, but in that case, I would think that text and perhaps diagram could be made clearer.\r\n\r\nThe direction of the arrows in the diagram seems to suggest that there is only a single communication to \"Relying Party 1\" which is the \"Attestation Result\".\r\n",
+      "createdAt": "2022-09-07T15:01:37Z",
+      "updatedAt": "2022-09-07T15:01:45Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 434,
+      "id": "I_kwDODT6R7s5Ra186",
+      "title": "GEN review comments",
+      "url": "https://github.com/ietf-rats-wg/architecture/issues/434",
+      "state": "OPEN",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "mcr"
+      ],
+      "labels": [],
+      "body": "Archived-At: <https://mailarchive.ietf.org/arch/msg/rats/pLZ4oeYgStKiygg_KA5NMJN6HQg>\r\n",
+      "createdAt": "2022-09-08T10:23:43Z",
+      "updatedAt": "2022-09-09T15:14:38Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 435,
+      "id": "I_kwDODT6R7s5RgNEI",
+      "title": "SecAD review:  figure 3",
+      "url": "https://github.com/ietf-rats-wg/architecture/issues/435",
+      "state": "OPEN",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Archived-At: <https://mailarchive.ietf.org/arch/msg/rats/8zFV_R7aFkCQxuzw0ljjh9tfamQ>\r\n\r\n````\r\n#1 Figure 3\r\n\r\nI cannot make sense of Figure 3. I understand the text in Section 3.2, so it\r\nmight not matter. But for instance the figure does not show to me at all that\r\nthe bootloader attested the kernel.\r\n\r\n#2 Dark sides\r\n\r\nObviously, this architecture can be misused for bad things. It might be nice to\r\nhave a section on this as per RFC 8280, but I am also not sure what to say\r\nother than \"don't use this to restrict people based on discriminatory features\".\r\n\r\n````\r\n",
+      "createdAt": "2022-09-09T07:14:57Z",
+      "updatedAt": "2022-09-09T07:14:57Z",
       "closedAt": null,
       "comments": []
     }
@@ -35700,6 +35752,81 @@
           "body": "",
           "createdAt": "2022-08-17T01:47:29Z",
           "updatedAt": "2022-08-17T01:47:29Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 432,
+      "id": "PR_kwDODT6R7s4-fT8P",
+      "title": "Mcr minor nits reported",
+      "url": "https://github.com/ietf-rats-wg/architecture/pull/432",
+      "state": "MERGED",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "a branch for minor edits/not as reported by COMMENTS",
+      "createdAt": "2022-09-07T07:51:57Z",
+      "updatedAt": "2022-09-09T19:42:02Z",
+      "baseRepository": "ietf-rats-wg/architecture",
+      "baseRefName": "master",
+      "baseRefOid": "33be895063f923c6303d5c9fa0308d2b30314e5d",
+      "headRepository": "ietf-rats-wg/architecture",
+      "headRefName": "mcr-minor-nits-reported",
+      "headRefOid": "3a8f7506cbcc76f41d20ceb6cb2baedef2a2cee7",
+      "closedAt": "2022-09-09T19:41:59Z",
+      "mergedAt": "2022-09-09T19:41:59Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "af2856804a523091a39738a591b34b1d7f9628f6"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDODT6R7s5BtaU2",
+          "commit": {
+            "abbreviatedOid": "f6abec6"
+          },
+          "author": "nedmsmith",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-09-09T14:30:48Z",
+          "updatedAt": "2022-09-09T14:30:48Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDODT6R7s5BtavG",
+          "commit": {
+            "abbreviatedOid": "f6abec6"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-09-09T14:31:54Z",
+          "updatedAt": "2022-09-09T14:31:55Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "```suggestion\r\nFor example, if clocks exist within the Attesting Environment and are considered trustworthy (tamper-proof) but are not synchronized, a nonce-based exchange may be used to determine the (relative) time offset between the involved peers, followed by any number of timestamp\r\n```",
+              "createdAt": "2022-09-09T14:31:55Z",
+              "updatedAt": "2022-09-09T14:31:55Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDODT6R7s5Btax5",
+          "commit": {
+            "abbreviatedOid": "f6abec6"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-09-09T14:32:02Z",
+          "updatedAt": "2022-09-09T14:32:02Z",
           "comments": []
         }
       ]
