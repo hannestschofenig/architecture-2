@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-09-09T19:42:13.571537+00:00",
+  "timestamp": "2022-09-27T12:12:58.149204+00:00",
   "repo": "ietf-rats-wg/architecture",
   "labels": [
     {
@@ -6727,6 +6727,24 @@
       "body": "Archived-At: <https://mailarchive.ietf.org/arch/msg/rats/8zFV_R7aFkCQxuzw0ljjh9tfamQ>\r\n\r\n````\r\n#1 Figure 3\r\n\r\nI cannot make sense of Figure 3. I understand the text in Section 3.2, so it\r\nmight not matter. But for instance the figure does not show to me at all that\r\nthe bootloader attested the kernel.\r\n\r\n#2 Dark sides\r\n\r\nObviously, this architecture can be misused for bad things. It might be nice to\r\nhave a section on this as per RFC 8280, but I am also not sure what to say\r\nother than \"don't use this to restrict people based on discriminatory features\".\r\n\r\n````\r\n",
       "createdAt": "2022-09-09T07:14:57Z",
       "updatedAt": "2022-09-09T07:14:57Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 436,
+      "id": "I_kwDODT6R7s5StQp2",
+      "title": "Comments from GenART AD",
+      "url": "https://github.com/ietf-rats-wg/architecture/issues/436",
+      "state": "OPEN",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "mcr"
+      ],
+      "labels": [],
+      "body": "# GEN AD review of draft-ietf-rats-architecture-21\r\n\r\nCC @larseggert\r\n\r\nThanks to Gyan S. Mishra for the General Area Review Team (Gen-ART) review\r\n(https://mailarchive.ietf.org/arch/msg/gen-art/weBLFxmD2doRWhcZDm-kGjv8m0A).\r\n\r\n## Comments\r\n\r\n### Boilerplate\r\n\r\nThis document uses the RFC2119 keyword ['SHOULD'], but does not contain the\r\nrecommended RFC8174 boilerplate.\r\n\r\nI don't think you need to add the boilerplate, simply rephrase the sentence\r\nso it is more clear that you are in fact citing RFC4086 here?\r\n\r\n### Inclusive language\r\n\r\nFound terminology that should be reviewed for inclusivity; see\r\nhttps://www.rfc-editor.org/part2/#inclusive_language for background and more\r\nguidance:\r\n\r\n * Terms `native` and `natively`; alternatives might be `built-in`,\r\n   `fundamental`, `ingrained`, `intrinsic`, `original`\r\n\r\n## Nits\r\n\r\nAll comments below are about very minor potential issues that you may choose to\r\naddress in some way - or ignore - as you see fit. Some were flagged by\r\nautomated tools (via https://github.com/larseggert/ietf-reviewtool), so there\r\nwill likely be some false positives. There is no need to let me know what you\r\ndid with these suggestions.\r\n\r\n### Grammar/style\r\n\r\n#### Section 2.6, paragraph 2\r\n```\r\nuthenticator. Relying Party: Any web site, mobile application back-end, or s\r\n                                 ^^^^^^^^\r\n```\r\nNowadays, it's more common to write this as one word.\r\n\r\n#### Section 3, paragraph 2\r\n```\r\nem component, device is often used as a illustrative synonym throughout this\r\n                                      ^\r\n```\r\nUse \"an\" instead of \"a\" if the following word starts with a vowel sound, e.g.\r\n\"an article\", \"an hour\".\r\n\r\n#### Section 3, paragraph 4\r\n```\r\nl messages shown in Figure 1. Section Section 4 provides a more complete def\r\n                              ^^^^^^^^^^^^^^^\r\n```\r\nPossible typo: you repeated a word.\r\n\r\n#### Section 3.2, paragraph 4\r\n```\r\n-entity can be called an Attester. Among all the Attesters, there may be onl\r\n                                   ^^^^^\r\n```\r\nDo not mix variants of the same word (\"among\" and \"amongst\") within a single\r\ntext. (Also elsewhere.)\r\n\r\n#### Section 3.2, paragraph 5\r\n```\r\n final Evidence to the Verifier. Therefore the router is a composite device,\r\n                                 ^^^^^^^^^\r\n```\r\nA comma may be missing after the conjunctive/linking adverb \"Therefore\".\r\n\r\n#### Section 3.2, paragraph 6\r\n```\r\nt that connects to the Verifier. Typically one router in the group is design\r\n                                 ^^^^^^^^^\r\n```\r\nA comma may be missing after the conjunctive/linking adverb \"Typically\".\r\n\r\n#### Section 4.1, paragraph 9\r\n```\r\nation (e.g., birth certificate) is the the Evidence, the passport is an Attes\r\n                                   ^^^^^^^\r\n```\r\nPossible typo: you repeated a word.\r\n\r\n#### Section 5.2, paragraph 7\r\n```\r\ne Verifier is an expected one by out of band establishment of key material, c\r\n                                 ^^^^^^^^^^^\r\n```\r\nDid you mean \"out-of-band\"?\r\n\r\n#### Section 7.4, paragraph 1\r\n```\r\ne 1 illustrates the flow of a conceptual messages between various roles. This\r\n                            ^^^^^^^^^^^^^^^^^^^^^\r\n```\r\nThe plural noun \"messages\" cannot be used with the article \"a\". Did you mean \"a\r\nconceptual message\" or \"conceptual messages\"?\r\n\r\n#### Section 7.5, paragraph 1\r\n```\r\nn Attester, which can include privacy sensitive information as discussed in s\r\n                              ^^^^^^^^^^^^^^^^^\r\n```\r\nThis word is normally spelled with a hyphen.\r\n\r\n#### Section 7.5, paragraph 2\r\n```\r\nve information as discussed in section Section 11. Unlike Evidence, which is\r\n                               ^^^^^^^^^^^^^^^\r\n```\r\nPossible typo: you repeated a word.\r\n\r\n#### Section 9, paragraph 10\r\n```\r\n new epoch, such as by using a counter signed by the Epoch ID Distributor as\r\n                               ^^^^^^^^^^^^^^\r\n```\r\nThis word is normally spelled as one word.\r\n\r\n#### Section 9, paragraph 10\r\n```\r\nessages that might be associated with a epoch ID that the receiver has not ye\r\n                                      ^\r\n```\r\nUse \"an\" instead of \"a\" if the following word starts with a vowel sound, e.g.\r\n\"an article\", \"an hour\".\r\n\r\n#### Section 9, paragraph 11\r\n```\r\n ID approach minimizes the state kept to be independent of the number of Att\r\n                                 ^^^^^^^^^^\r\n```\r\nThe verb \"kept\" is used with the gerund form.\r\n\r\n#### Section 11, paragraph 7\r\n```\r\navoid attacks where an attacker is able get a key they control endorsed. To s\r\n                                   ^^^^^^^^\r\n```\r\nThe preposition \"to\" is required before the verb \"get\".\r\n\r\n#### Section 11, paragraph 8\r\n```\r\n authentication, * auditing, * fine grained access controls, and * logging. S\r\n                               ^^^^^^^^^^^^\r\n```\r\nThis word is normally spelled with a hyphen.\r\n\r\n#### Section 12.1.1, paragraph 1\r\n```\r\npants in a certain epoch of choice for ever, effectively freezing time. This\r\n                                   ^^^^^^^^\r\n```\r\nThe adverb \"forever\" is spelled as one word.\r\n\r\n```\r\nstation Result contains an expiry time time(RX_v) then it could explicitly ch\r\n                                  ^^^^^^^^^\r\n```\r\nPossible typo: you repeated a word.\r\n\r\n#### Section 16.2, paragraph 20\r\n```\r\n it to its own clock or timestamps. Thus we use a suffix (\"a\" for Attester, \"\r\n                                    ^^^^\r\n```\r\nA comma may be missing after the conjunctive/linking adverb \"Thus\".\r\n\r\n#### \"Appendix A.\", paragraph 3\r\n```\r\nme(EG_a)-time(VG_a) < Threshold. Similarly if, based on an Attestation Resul\r\n                                 ^^^^^^^^^\r\n```\r\nA comma may be missing after the conjunctive/linking adverb \"Similarly\".\r\n\r\n## Notes\r\n",
+      "createdAt": "2022-09-27T11:31:51Z",
+      "updatedAt": "2022-09-27T11:32:01Z",
       "closedAt": null,
       "comments": []
     }
@@ -35830,6 +35848,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 437,
+      "id": "PR_kwDODT6R7s4_sIeJ",
+      "title": "typos and comments from Lars",
+      "url": "https://github.com/ietf-rats-wg/architecture/pull/437",
+      "state": "OPEN",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fixes for comments from Lars.\r\nclose #436 ",
+      "createdAt": "2022-09-27T12:12:45Z",
+      "updatedAt": "2022-09-27T12:12:45Z",
+      "baseRepository": "ietf-rats-wg/architecture",
+      "baseRefName": "master",
+      "baseRefOid": "af2856804a523091a39738a591b34b1d7f9628f6",
+      "headRepository": "ietf-rats-wg/architecture",
+      "headRefName": "lars-review-comments",
+      "headRefOid": "429a6c5b81fa027e38886b67ab63725504f68977",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
