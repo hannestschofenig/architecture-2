@@ -5,14 +5,14 @@
 RATS Working Group                                           H. Birkholz
 Internet-Draft                                            Fraunhofer SIT
 Intended status: Informational                                 D. Thaler
-Expires: 16 February 2023                                      Microsoft
+Expires: 31 March 2023                                         Microsoft
                                                            M. Richardson
                                                 Sandelman Software Works
                                                                 N. Smith
                                                                    Intel
                                                                   W. Pan
                                                      Huawei Technologies
-                                                          15 August 2022
+                                                       27 September 2022
 
 
                Remote Attestation Procedures Architecture
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 February 2023.
+   This Internet-Draft will expire on 31 March 2023.
 
 Copyright Notice
 
@@ -149,8 +149,8 @@ Table of Contents
 
    For example:
 
-   *  A bank back-end system might refuse to transact with another
-      system that is not known to be in a good state.
+   *  A bank backend system might refuse to transact with another system
+      that is not known to be in a good state.
 
    *  A healthcare system might refuse to transmit electronic healthcare
       records to a system that is not known to be in a good state.
@@ -181,7 +181,7 @@ Table of Contents
    Amongst other things, this document is about trust and
    trustworthiness.  Trust is a choice one makes about another system.
    Trustworthiness is a quality about the other system that can be used
-   in making one's decision to trust it or not.  This is subtle
+   in making one's decision to trust it or not.  This is a subtle
    difference and being familiar with the difference is crucial for
    using this document.  Additionally, the concepts of freshness and
    trust relationships with respect to RATS are elaborated on to enable
@@ -349,7 +349,7 @@ Table of Contents
 
    Attester:  FIDO Authenticator.
 
-   Relying Party:  Any web site, mobile application back-end, or service
+   Relying Party:  Any web site, mobile application backend, or service
       that relies on authentication data based on biometric information.
 
 3.  Architectural Overview
@@ -387,7 +387,7 @@ Table of Contents
    illustrated in Figure 1.  Roles are assigned to entities.  Entities
    are often system components [RFC4949], such as devices.  As the term
    device is typically more intuitive than the term entity or system
-   component, device is often used as a illustrative synonym throughout
+   component, device is often used as an illustrative synonym throughout
    this document.
 
    The Attester role is assigned to entities that create Evidence that
@@ -419,8 +419,8 @@ Table of Contents
    some other mechanism.
 
    See Section 8 for further discussion of the conceptual messages shown
-   in Figure 1.  Section Section 4 provides a more complete definition
-   of all RATS roles.
+   in Figure 1.  Section 4 provides a more complete definition of all
+   RATS roles.
 
 3.1.  Two Types of Environments of an Attester
 
@@ -615,7 +615,7 @@ Table of Contents
    with the main slot by the links between them inside the router.  So
    the main slot collects the Evidence of other slots, produces the
    final Evidence of the whole router and conveys the final Evidence to
-   the Verifier.  Therefore the router is a composite device, each slot
+   the Verifier.  Therefore, the router is a composite device, each slot
    is an Attester, and the main slot is the lead Attester.
 
    Another example is a multi-chassis router composed of multiple single
@@ -623,9 +623,9 @@ Table of Contents
    groups that provide higher throughput by interconnecting multiple
    routers in these groups, which can be treated as one logical router
    for simpler management.  A multi-chassis router setup provides a
-   management point that connects to the Verifier.  Typically one router
-   in the group is designated as the main router.  Other routers in the
-   multi-chassis setup are connected to the main router only via
+   management point that connects to the Verifier.  Typically, one
+   router in the group is designated as the main router.  Other routers
+   in the multi-chassis setup are connected to the main router only via
    physical network links and are therefore managed and appraised via
    the main router's help.  Consequently, a multi-chassis router setup
    is a composite device, each router is an Attester, and the main
@@ -843,11 +843,13 @@ Table of Contents
    when it needs to assert a citizenship or identity Claim, such as an
    airport immigration desk.  The passport is considered sufficient
    because it vouches for the citizenship and identity Claims, and it is
-   issued by a trusted authority.  Thus, in this immigration desk
-   analogy, the citizen is the Attester, the passport issuing agency is
-   a Verifier, the passport application and identifying information
-   (e.g., birth certificate) is the the Evidence, the passport is an
-   Attestation Result, and the immigration desk is a Relying Party.
+   issued by a trusted authority.
+
+   Thus, in this immigration desk analogy, the citizen is the Attester,
+   the passport issuing agency is a Verifier, and the passport
+   application and identifying information (e.g., birth certificate) is
+   the the Evidence.  The passport is an Attestation Result, and the
+   immigration desk is a Relying Party.
 
    In this model, an Attester conveys Evidence to a Verifier, which
    compares the Evidence against its appraisal policy.  The Verifier
@@ -1062,7 +1064,7 @@ Table of Contents
    store, or might be expressed by storing the public key or certificate
    of an entity (e.g., a Certificate Authority) that is in the
    Verifier's certificate path.  For example, the Relying Party can
-   verify that the Verifier is an expected one by out of band
+   verify that the Verifier is an expected one by out-of-band
    establishment of key material, combined with a protocol like TLS to
    communicate.  There is an assumption that between the establishment
    of the trusted key material and the creation of the Evidence, that
@@ -1235,8 +1237,8 @@ Table of Contents
 
 8.  Conceptual Messages
 
-   Figure 1 illustrates the flow of a conceptual messages between
-   various roles.  This section provides additional elaboration and
+   Figure 1 illustrates the flow of conceptual messages between various
+   roles.  This section provides additional elaboration and
    implementation considerations.  It is the responsibility of protocol
    specifications to define the actual data format and semantics of any
    relevant conceptual messages.
@@ -1334,8 +1336,8 @@ Table of Contents
 
    Thus, Attestation Results can contain detailed information about an
    Attester, which can include privacy sensitive information as
-   discussed in section Section 11.  Unlike Evidence, which is often
-   very device- and vendor-specific, Attestation Results can be vendor-
+   discussed in Section 11.  Unlike Evidence, which is often very
+   device- and vendor-specific, Attestation Results can be vendor-
    neutral, if the Verifier has a way to generate vendor-agnostic
    information based on the appraisal of vendor-specific information in
    Evidence.  This allows a Relying Party's appraisal policy to be
@@ -1549,7 +1551,7 @@ Table of Contents
    ID, or by including both the current and previous epoch IDs in
    messages and/or checks, by requiring retries in case of mismatching
    epoch IDs, or by buffering incoming messages that might be associated
-   with a epoch ID that the receiver has not yet obtained.
+   with an epoch ID that the receiver has not yet obtained.
 
    More generally, in order to prevent an appraising entity from
    generating false negatives (e.g., discarding Evidence that is deemed
@@ -1572,10 +1574,11 @@ Table of Contents
 10.4.  Discussion
 
    Implicit and explicit timekeeping can be combined into hybrid
-   mechanisms.  For example, if clocks exist and are considered
-   trustworthy but are not synchronized, a nonce-based exchange may be
-   used to determine the (relative) time offset between the involved
-   peers, followed by any number of timestamp based exchanges.
+   mechanisms.  For example, if clocks exist within the Attesting
+   Environment and are considered trustworthy (tamper-proof) but are not
+   synchronized, a nonce-based exchange may be used to determine the
+   (relative) time offset between the involved peers, followed by any
+   number of timestamp based exchanges.
 
    It is important to note that the actual values in Claims might have
    been generated long before the Claims are signed.  If so, it is the
@@ -1720,9 +1723,9 @@ Table of Contents
    and the validation key material off the device.  Sometimes this
    procedure is referred to as personalization or customization.
 
-   The keys generated in the factory, whether generated in the device or
-   off-device by the factory SHOULD be generated by a Cryptographically
-   Strong Sequence ([RFC4086], Section 6.2).
+   When generating keys off-device in the factory or in the device the
+   use of a Cryptographically Strong Sequence ([RFC4086], Section 6.2)
+   needs consideration.
 
 12.1.2.1.  Off-Device Key Generation
 
@@ -1763,7 +1766,7 @@ Table of Contents
    key cryptography, it is, by definition, not necessary to maintain
    confidentiality of the public key: however integrity of the chain of
    custody of the public key is necessary in order to avoid attacks
-   where an attacker is able get a key they control endorsed.
+   where an attacker is able to get a key they control endorsed.
 
    To summarize: attestation key provisioning must ensure that only
    valid attestation key material is established in Attesters.
@@ -1830,7 +1833,7 @@ Table of Contents
    compromised.
 
    An attacker who is able to tamper with epoch IDs can potentially lock
-   all the participants in a certain epoch of choice for ever,
+   all the participants in a certain epoch of choice forever,
    effectively freezing time.  This is problematic since it destroys the
    ability to ascertain freshness of Evidence and Attestation Results.
 
@@ -1927,7 +1930,7 @@ Table of Contents
               20180227.html>.
 
    [I-D.birkholz-rats-tuda]
-              Fuchs, A., Birkholz, H., McDonald, I. E., and C. Bormann,
+              Fuchs, A., Birkholz, H., McDonald, I., and C. Bormann,
               "Time-Based Uni-Directional Attestation", Work in
               Progress, Internet-Draft, draft-birkholz-rats-tuda-07, 10
               July 2022, <https://datatracker.ietf.org/doc/html/draft-
@@ -1945,12 +1948,12 @@ Table of Contents
               Birkholz, H., Newton, C., Chen, L., and D. Thaler, "Direct
               Anonymous Attestation for the Remote Attestation
               Procedures Architecture", Work in Progress, Internet-
-              Draft, draft-ietf-rats-daa-01, 10 July 2022,
+              Draft, draft-ietf-rats-daa-02, 7 September 2022,
               <https://datatracker.ietf.org/doc/html/draft-ietf-rats-
-              daa-01>.
+              daa-02>.
 
    [I-D.ietf-teep-architecture]
-              Pei, M., Tschofenig, H., Thaler, D., and D. Wheeler,
+              Pei, M., Tschofenig, H., Thaler, D., and D. M. Wheeler,
               "Trusted Execution Environment Provisioning (TEEP)
               Architecture", Work in Progress, Internet-Draft, draft-
               ietf-teep-architecture-18, 11 July 2022,
@@ -1958,12 +1961,12 @@ Table of Contents
               architecture-18>.
 
    [I-D.tschofenig-rats-psa-token]
-              Tschofenig, H., Frost, S., Brossard, M., Shaw, A., and T.
-              Fossati, "Arm's Platform Security Architecture (PSA)
+              Tschofenig, H., Frost, S., Brossard, M., Shaw, A. L., and
+              T. Fossati, "Arm's Platform Security Architecture (PSA)
               Attestation Token", Work in Progress, Internet-Draft,
-              draft-tschofenig-rats-psa-token-09, 7 March 2022,
+              draft-tschofenig-rats-psa-token-10, 6 September 2022,
               <https://datatracker.ietf.org/doc/html/draft-tschofenig-
-              rats-psa-token-09>.
+              rats-psa-token-10>.
 
    [I-D.tschofenig-tls-cwt]
               Tschofenig, H. and M. Brossard, "Using CBOR Web Tokens
@@ -2187,7 +2190,7 @@ A.2.  Example 2: Nonce-based Passport Model Example
    The advantage is that it does not require that any clocks are
    synchronized.  As a result, the receiver of a conceptual message
    containing a timestamp cannot directly compare it to its own clock or
-   timestamps.  Thus we use a suffix ("a" for Attester, "v" for
+   timestamps.  Thus, we use a suffix ("a" for Attester, "v" for
    Verifier, and "r" for Relying Party) on the IDs below indicating
    which clock generated them, since times from different clocks cannot
    be compared.  Only the delta between two events from the sender can
