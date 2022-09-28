@@ -5,14 +5,14 @@
 RATS Working Group                                           H. Birkholz
 Internet-Draft                                            Fraunhofer SIT
 Intended status: Informational                                 D. Thaler
-Expires: 31 March 2023                                         Microsoft
+Expires: 1 April 2023                                          Microsoft
                                                            M. Richardson
                                                 Sandelman Software Works
                                                                 N. Smith
                                                                    Intel
                                                                   W. Pan
                                                      Huawei Technologies
-                                                       27 September 2022
+                                                       28 September 2022
 
 
                Remote Attestation Procedures Architecture
@@ -54,7 +54,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 March 2023.
+   This Internet-Draft will expire on 1 April 2023.
 
 Copyright Notice
 
@@ -222,8 +222,8 @@ Table of Contents
    trustworthiness appraisals for other components.  Such components
    perform operations that help determine the trustworthiness of yet
    other components, by collecting, protecting or signing measurements.
-   Measurements that have been signed by such components comprise
-   Evidence that when evaluated either supports or refutes a claim of
+   Measurements that have been signed by such components are comprised
+   of Evidence that when evaluated either supports or refutes a claim of
    trustworthiness.  Measurements can describe a variety of attributes
    of system components, such as hardware, firmware, BIOS, software,
    etc.
@@ -697,9 +697,9 @@ Table of Contents
    artifact means that a given role introduces it into the RATS
    architecture.  To consume an artifact means that a given role has
    responsibility for processing it in the RATS architecture.  Roles
-   also have the ability to perform additional actions such caching or
-   forwarding artifacts as opaque data.  As depicted in Section 5, these
-   additional actions can be performed by several roles.
+   also have the ability to perform additional actions such as caching
+   or forwarding artifacts as opaque data.  As depicted in Section 5,
+   these additional actions can be performed by several roles.
 
 4.  Terminology
 
