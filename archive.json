@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-09-27T12:12:58.149204+00:00",
+  "timestamp": "2022-09-28T09:38:57.615519+00:00",
   "repo": "ietf-rats-wg/architecture",
   "labels": [
     {
@@ -6564,7 +6564,7 @@
       "id": "I_kwDODT6R7s5L8nTg",
       "title": "Minor grammar",
       "url": "https://github.com/ietf-rats-wg/architecture/issues/420",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "steven-bellock",
       "authorAssociation": "NONE",
       "assignees": [
@@ -6573,8 +6573,8 @@
       "labels": [],
       "body": ">The Relying Party role is assigned to entities that uses Attestation Results by applying its own appraisal policy to make application-specific decisions, such as authorization decisions.\r\n\r\nshould be\r\n>The Relying Party role is assigned to entities that use Attestation Results by applying their own appraisal policies to make application-specific decisions, such as authorization decisions.\r\n\r\nor\r\n>The Relying Party role is assigned to an entity that uses Attestation Results by applying its own appraisal policy to make application-specific decisions, such as authorization decisions.",
       "createdAt": "2022-06-16T22:51:48Z",
-      "updatedAt": "2022-07-24T18:27:57Z",
-      "closedAt": null,
+      "updatedAt": "2022-09-27T12:53:06Z",
+      "closedAt": "2022-09-27T12:53:06Z",
       "comments": [
         {
           "author": "nedmsmith",
@@ -6651,16 +6651,24 @@
       "id": "I_kwDODT6R7s5QpbqU",
       "title": "SecDir review: mitigation against contextual attack",
       "url": "https://github.com/ietf-rats-wg/architecture/issues/430",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "mcr",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "The review is at:  https://mailarchive.ietf.org/arch/msg/last-call/0JpYvkgL-79nvmsrUpWKtMqtkhE\r\nThe review is positive, but asks for:\r\n````\r\nEven                       \r\nif confidentiality is provided, the section goes on to state that information                        \r\ncan still be inferred by contextual or timing of the attestor exchange.  The                         \r\ndraft doesn\u2019t describe ways to mitigate against this type of attack but should                       \r\ngive some guidance. \r\n````\r\n",
       "createdAt": "2022-08-27T12:53:37Z",
-      "updatedAt": "2022-08-27T12:53:37Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2022-09-28T09:38:32Z",
+      "closedAt": "2022-09-28T09:38:32Z",
+      "comments": [
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'm not sure how, in an abstract architecture, we can mitigate against timing attacks.  A specific protocol could propose mechanisms to defeat traffic analysis, but I don't think that the architecture can do this.\r\nOther typos handled.",
+          "createdAt": "2022-09-27T12:50:26Z",
+          "updatedAt": "2022-09-27T12:50:26Z"
+        }
+      ]
     },
     {
       "number": 431,
@@ -6671,12 +6679,36 @@
       "author": "mcr",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "wontfix"
+      ],
       "body": "As per discussion at: https://mailarchive.ietf.org/arch/msg/rats/REAexJRlAPnRCofS--8r8Zhcxgo/  consider replacing the chassis example with an a mobile example.\r\n",
       "createdAt": "2022-08-27T13:04:13Z",
-      "updatedAt": "2022-08-27T13:04:13Z",
+      "updatedAt": "2022-09-27T17:15:32Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Wontfix to be confirmed by group.\r\n@dthaler @henkbirkholz @William-PanWei ",
+          "createdAt": "2022-09-27T12:45:48Z",
+          "updatedAt": "2022-09-27T12:46:09Z"
+        },
+        {
+          "author": "dthaler",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I agree with wontfix but this example came from someone else who may feel more strongly.",
+          "createdAt": "2022-09-27T14:55:46Z",
+          "updatedAt": "2022-09-27T14:55:46Z"
+        },
+        {
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "body": "removing the chassis example would be an issue to various contributors, I think. In principle that would not stop us to add a mobile phone example. Are these issues coupled?",
+          "createdAt": "2022-09-27T17:15:32Z",
+          "updatedAt": "2022-09-27T17:15:32Z"
+        }
+      ]
     },
     {
       "number": 433,
@@ -6701,7 +6733,7 @@
       "id": "I_kwDODT6R7s5Ra186",
       "title": "GEN review comments",
       "url": "https://github.com/ietf-rats-wg/architecture/issues/434",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "mcr",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -6710,9 +6742,17 @@
       "labels": [],
       "body": "Archived-At: <https://mailarchive.ietf.org/arch/msg/rats/pLZ4oeYgStKiygg_KA5NMJN6HQg>\r\n",
       "createdAt": "2022-09-08T10:23:43Z",
-      "updatedAt": "2022-09-09T15:14:38Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2022-09-27T12:43:35Z",
+      "closedAt": "2022-09-27T12:43:34Z",
+      "comments": [
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "duplicates #436.",
+          "createdAt": "2022-09-27T12:43:34Z",
+          "updatedAt": "2022-09-27T12:43:34Z"
+        }
+      ]
     },
     {
       "number": 435,
@@ -6722,20 +6762,30 @@
       "state": "OPEN",
       "author": "mcr",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "mcr"
+      ],
       "labels": [],
       "body": "Archived-At: <https://mailarchive.ietf.org/arch/msg/rats/8zFV_R7aFkCQxuzw0ljjh9tfamQ>\r\n\r\n````\r\n#1 Figure 3\r\n\r\nI cannot make sense of Figure 3. I understand the text in Section 3.2, so it\r\nmight not matter. But for instance the figure does not show to me at all that\r\nthe bootloader attested the kernel.\r\n\r\n#2 Dark sides\r\n\r\nObviously, this architecture can be misused for bad things. It might be nice to\r\nhave a section on this as per RFC 8280, but I am also not sure what to say\r\nother than \"don't use this to restrict people based on discriminatory features\".\r\n\r\n````\r\n",
       "createdAt": "2022-09-09T07:14:57Z",
-      "updatedAt": "2022-09-09T07:14:57Z",
+      "updatedAt": "2022-09-27T12:30:21Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "mcr",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Replied on list, not sure how to improve things.\r\n",
+          "createdAt": "2022-09-27T12:30:21Z",
+          "updatedAt": "2022-09-27T12:30:21Z"
+        }
+      ]
     },
     {
       "number": 436,
       "id": "I_kwDODT6R7s5StQp2",
       "title": "Comments from GenART AD",
       "url": "https://github.com/ietf-rats-wg/architecture/issues/436",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "mcr",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -6744,8 +6794,8 @@
       "labels": [],
       "body": "# GEN AD review of draft-ietf-rats-architecture-21\r\n\r\nCC @larseggert\r\n\r\nThanks to Gyan S. Mishra for the General Area Review Team (Gen-ART) review\r\n(https://mailarchive.ietf.org/arch/msg/gen-art/weBLFxmD2doRWhcZDm-kGjv8m0A).\r\n\r\n## Comments\r\n\r\n### Boilerplate\r\n\r\nThis document uses the RFC2119 keyword ['SHOULD'], but does not contain the\r\nrecommended RFC8174 boilerplate.\r\n\r\nI don't think you need to add the boilerplate, simply rephrase the sentence\r\nso it is more clear that you are in fact citing RFC4086 here?\r\n\r\n### Inclusive language\r\n\r\nFound terminology that should be reviewed for inclusivity; see\r\nhttps://www.rfc-editor.org/part2/#inclusive_language for background and more\r\nguidance:\r\n\r\n * Terms `native` and `natively`; alternatives might be `built-in`,\r\n   `fundamental`, `ingrained`, `intrinsic`, `original`\r\n\r\n## Nits\r\n\r\nAll comments below are about very minor potential issues that you may choose to\r\naddress in some way - or ignore - as you see fit. Some were flagged by\r\nautomated tools (via https://github.com/larseggert/ietf-reviewtool), so there\r\nwill likely be some false positives. There is no need to let me know what you\r\ndid with these suggestions.\r\n\r\n### Grammar/style\r\n\r\n#### Section 2.6, paragraph 2\r\n```\r\nuthenticator. Relying Party: Any web site, mobile application back-end, or s\r\n                                 ^^^^^^^^\r\n```\r\nNowadays, it's more common to write this as one word.\r\n\r\n#### Section 3, paragraph 2\r\n```\r\nem component, device is often used as a illustrative synonym throughout this\r\n                                      ^\r\n```\r\nUse \"an\" instead of \"a\" if the following word starts with a vowel sound, e.g.\r\n\"an article\", \"an hour\".\r\n\r\n#### Section 3, paragraph 4\r\n```\r\nl messages shown in Figure 1. Section Section 4 provides a more complete def\r\n                              ^^^^^^^^^^^^^^^\r\n```\r\nPossible typo: you repeated a word.\r\n\r\n#### Section 3.2, paragraph 4\r\n```\r\n-entity can be called an Attester. Among all the Attesters, there may be onl\r\n                                   ^^^^^\r\n```\r\nDo not mix variants of the same word (\"among\" and \"amongst\") within a single\r\ntext. (Also elsewhere.)\r\n\r\n#### Section 3.2, paragraph 5\r\n```\r\n final Evidence to the Verifier. Therefore the router is a composite device,\r\n                                 ^^^^^^^^^\r\n```\r\nA comma may be missing after the conjunctive/linking adverb \"Therefore\".\r\n\r\n#### Section 3.2, paragraph 6\r\n```\r\nt that connects to the Verifier. Typically one router in the group is design\r\n                                 ^^^^^^^^^\r\n```\r\nA comma may be missing after the conjunctive/linking adverb \"Typically\".\r\n\r\n#### Section 4.1, paragraph 9\r\n```\r\nation (e.g., birth certificate) is the the Evidence, the passport is an Attes\r\n                                   ^^^^^^^\r\n```\r\nPossible typo: you repeated a word.\r\n\r\n#### Section 5.2, paragraph 7\r\n```\r\ne Verifier is an expected one by out of band establishment of key material, c\r\n                                 ^^^^^^^^^^^\r\n```\r\nDid you mean \"out-of-band\"?\r\n\r\n#### Section 7.4, paragraph 1\r\n```\r\ne 1 illustrates the flow of a conceptual messages between various roles. This\r\n                            ^^^^^^^^^^^^^^^^^^^^^\r\n```\r\nThe plural noun \"messages\" cannot be used with the article \"a\". Did you mean \"a\r\nconceptual message\" or \"conceptual messages\"?\r\n\r\n#### Section 7.5, paragraph 1\r\n```\r\nn Attester, which can include privacy sensitive information as discussed in s\r\n                              ^^^^^^^^^^^^^^^^^\r\n```\r\nThis word is normally spelled with a hyphen.\r\n\r\n#### Section 7.5, paragraph 2\r\n```\r\nve information as discussed in section Section 11. Unlike Evidence, which is\r\n                               ^^^^^^^^^^^^^^^\r\n```\r\nPossible typo: you repeated a word.\r\n\r\n#### Section 9, paragraph 10\r\n```\r\n new epoch, such as by using a counter signed by the Epoch ID Distributor as\r\n                               ^^^^^^^^^^^^^^\r\n```\r\nThis word is normally spelled as one word.\r\n\r\n#### Section 9, paragraph 10\r\n```\r\nessages that might be associated with a epoch ID that the receiver has not ye\r\n                                      ^\r\n```\r\nUse \"an\" instead of \"a\" if the following word starts with a vowel sound, e.g.\r\n\"an article\", \"an hour\".\r\n\r\n#### Section 9, paragraph 11\r\n```\r\n ID approach minimizes the state kept to be independent of the number of Att\r\n                                 ^^^^^^^^^^\r\n```\r\nThe verb \"kept\" is used with the gerund form.\r\n\r\n#### Section 11, paragraph 7\r\n```\r\navoid attacks where an attacker is able get a key they control endorsed. To s\r\n                                   ^^^^^^^^\r\n```\r\nThe preposition \"to\" is required before the verb \"get\".\r\n\r\n#### Section 11, paragraph 8\r\n```\r\n authentication, * auditing, * fine grained access controls, and * logging. S\r\n                               ^^^^^^^^^^^^\r\n```\r\nThis word is normally spelled with a hyphen.\r\n\r\n#### Section 12.1.1, paragraph 1\r\n```\r\npants in a certain epoch of choice for ever, effectively freezing time. This\r\n                                   ^^^^^^^^\r\n```\r\nThe adverb \"forever\" is spelled as one word.\r\n\r\n```\r\nstation Result contains an expiry time time(RX_v) then it could explicitly ch\r\n                                  ^^^^^^^^^\r\n```\r\nPossible typo: you repeated a word.\r\n\r\n#### Section 16.2, paragraph 20\r\n```\r\n it to its own clock or timestamps. Thus we use a suffix (\"a\" for Attester, \"\r\n                                    ^^^^\r\n```\r\nA comma may be missing after the conjunctive/linking adverb \"Thus\".\r\n\r\n#### \"Appendix A.\", paragraph 3\r\n```\r\nme(EG_a)-time(VG_a) < Threshold. Similarly if, based on an Attestation Resul\r\n                                 ^^^^^^^^^\r\n```\r\nA comma may be missing after the conjunctive/linking adverb \"Similarly\".\r\n\r\n## Notes\r\n",
       "createdAt": "2022-09-27T11:31:51Z",
-      "updatedAt": "2022-09-27T11:32:01Z",
-      "closedAt": null,
+      "updatedAt": "2022-09-27T17:39:11Z",
+      "closedAt": "2022-09-27T17:39:11Z",
       "comments": []
     }
   ],
@@ -35854,26 +35904,144 @@
       "id": "PR_kwDODT6R7s4_sIeJ",
       "title": "typos and comments from Lars",
       "url": "https://github.com/ietf-rats-wg/architecture/pull/437",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "mcr",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "fixes for comments from Lars.\r\nclose #436 ",
       "createdAt": "2022-09-27T12:12:45Z",
-      "updatedAt": "2022-09-27T12:12:45Z",
+      "updatedAt": "2022-09-27T17:39:10Z",
       "baseRepository": "ietf-rats-wg/architecture",
       "baseRefName": "master",
       "baseRefOid": "af2856804a523091a39738a591b34b1d7f9628f6",
       "headRepository": "ietf-rats-wg/architecture",
       "headRefName": "lars-review-comments",
-      "headRefOid": "429a6c5b81fa027e38886b67ab63725504f68977",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "30a793b8325a745a79992ecf86bcd2d8c05d4795",
+      "closedAt": "2022-09-27T17:39:10Z",
+      "mergedAt": "2022-09-27T17:39:10Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "d81077cf034be1b4466988628a697adb108d6048"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDODT6R7s5C4rUM",
+          "commit": {
+            "abbreviatedOid": "429a6c5"
+          },
+          "author": "dthaler",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-09-27T14:52:16Z",
+          "updatedAt": "2022-09-27T14:53:44Z",
+          "comments": [
+            {
+              "originalPosition": 114,
+              "body": "```suggestion\r\nWhen generating keys off-device in the factory or in the device, the use of\r\n```",
+              "createdAt": "2022-09-27T14:52:16Z",
+              "updatedAt": "2022-09-27T14:53:44Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDODT6R7s5C5iB8",
+          "commit": {
+            "abbreviatedOid": "429a6c5"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "lgtm, including Dave's comma",
+          "createdAt": "2022-09-27T17:07:51Z",
+          "updatedAt": "2022-09-27T17:07:51Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 438,
+      "id": "PR_kwDODT6R7s4_sT4Q",
+      "title": "two additional typos found by SecDir review",
+      "url": "https://github.com/ietf-rats-wg/architecture/pull/438",
+      "state": "MERGED",
+      "author": "mcr",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "close #430 ",
+      "createdAt": "2022-09-27T12:51:07Z",
+      "updatedAt": "2022-09-28T09:38:31Z",
+      "baseRepository": "ietf-rats-wg/architecture",
+      "baseRefName": "master",
+      "baseRefOid": "af2856804a523091a39738a591b34b1d7f9628f6",
+      "headRepository": "ietf-rats-wg/architecture",
+      "headRefName": "secdir-review-comments",
+      "headRefOid": "d240776c271f7373025d5f10f243519f98a6883e",
+      "closedAt": "2022-09-28T09:38:31Z",
+      "mergedAt": "2022-09-28T09:38:31Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "1fd594cc3df33eb99ff6679ee7c06d3ae8ff5f49"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDODT6R7s5C4qfR",
+          "commit": {
+            "abbreviatedOid": "8cf94a6"
+          },
+          "author": "dthaler",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-09-27T14:50:31Z",
+          "updatedAt": "2022-09-27T14:50:32Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "My reading of https://www.merriam-webster.com/dictionary/comprise is that this change is not grammatically correct.  It was ok as it was, but more readable would be\r\n```suggestion\r\nMeasurements that have been signed by such components are comprised of Evidence that when evaluated either supports or refutes a claim of trustworthiness.\r\n```\r\nThat is, \"of\" is used with \"are comprised\" but not \"comprise\".",
+              "createdAt": "2022-09-27T14:50:31Z",
+              "updatedAt": "2022-09-27T14:50:32Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDODT6R7s5C5hfj",
+          "commit": {
+            "abbreviatedOid": "8cf94a6"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-09-27T17:06:18Z",
+          "updatedAt": "2022-09-27T17:06:18Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "lets add Dave's two words to be both readable and correct",
+              "createdAt": "2022-09-27T17:06:18Z",
+              "updatedAt": "2022-09-27T17:06:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDODT6R7s5C6c9u",
+          "commit": {
+            "abbreviatedOid": "d240776"
+          },
+          "author": "dthaler",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-09-27T20:12:37Z",
+          "updatedAt": "2022-09-27T20:12:37Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
